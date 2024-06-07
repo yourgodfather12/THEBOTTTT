@@ -1,0 +1,157 @@
+{
+    "name": "NH WINS",
+    "id": 1241307368638255116,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:33:29.982000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241307825754476564,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241307826161451080,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241307827344244781,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241307828010876992,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241307829843787848,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241307830544236575,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241307831551135774,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241307832167698534,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241307833111412828,
+            "name": "Counties BELKNAP - SULLIVAN",
+            "type": "category"
+        },
+        {
+            "id": 1241307833753145427,
+            "name": "belknap",
+            "type": "text"
+        },
+        {
+            "id": 1241307835074351155,
+            "name": "carroll",
+            "type": "text"
+        },
+        {
+            "id": 1241307836143763537,
+            "name": "cheshire",
+            "type": "text"
+        },
+        {
+            "id": 1241307837007921213,
+            "name": "coos",
+            "type": "text"
+        },
+        {
+            "id": 1241307837812969512,
+            "name": "grafton",
+            "type": "text"
+        },
+        {
+            "id": 1241307838802952282,
+            "name": "hillsborough",
+            "type": "text"
+        },
+        {
+            "id": 1241307839704727562,
+            "name": "merrimack",
+            "type": "text"
+        },
+        {
+            "id": 1241307840572821544,
+            "name": "rockingham",
+            "type": "text"
+        },
+        {
+            "id": 1241307841655209995,
+            "name": "strafford",
+            "type": "text"
+        },
+        {
+            "id": 1241307842313453658,
+            "name": "sullivan",
+            "type": "text"
+        },
+        {
+            "id": 1241307842682683413,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241307843924066397,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241307844649681049,
+            "name": "log",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241307368638255116,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241307824714416198,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241307823858647072,
+            "name": "Member"
+        },
+        {
+            "id": 1241307822956875797,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241307822411485296,
+            "name": "Admin"
+        },
+        {
+            "id": 1241307743734861938,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241307665758425141,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241307394643070976,
+            "name": "Admin"
+        }
+    ]
+}

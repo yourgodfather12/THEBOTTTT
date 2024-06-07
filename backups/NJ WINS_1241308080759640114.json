@@ -1,0 +1,212 @@
+{
+    "name": "NJ WINS",
+    "id": 1241308080759640114,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:35:46.831000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241308348377337976,
+            "name": "cape-may",
+            "type": "text"
+        },
+        {
+            "id": 1241308346796081182,
+            "name": "burlington",
+            "type": "text"
+        },
+        {
+            "id": 1241308357650944011,
+            "name": "monmouth",
+            "type": "text"
+        },
+        {
+            "id": 1241308352479498401,
+            "name": "gloucester",
+            "type": "text"
+        },
+        {
+            "id": 1241308340559286312,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241308340001443840,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241308342723280925,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241308341750337546,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241308339267174441,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241308359911800973,
+            "name": "passaic",
+            "type": "text"
+        },
+        {
+            "id": 1241308365712523335,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241308347538341919,
+            "name": "camden",
+            "type": "text"
+        },
+        {
+            "id": 1241308355608182814,
+            "name": "mercer",
+            "type": "text"
+        },
+        {
+            "id": 1241308353314160751,
+            "name": "hudson",
+            "type": "text"
+        },
+        {
+            "id": 1241308363363713104,
+            "name": "sussex",
+            "type": "text"
+        },
+        {
+            "id": 1241308356644438066,
+            "name": "middlesex",
+            "type": "text"
+        },
+        {
+            "id": 1241308345416028211,
+            "name": "atlantic",
+            "type": "text"
+        },
+        {
+            "id": 1241308364885983293,
+            "name": "warren",
+            "type": "text"
+        },
+        {
+            "id": 1241308364101914684,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1241308338411671592,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241308346099699763,
+            "name": "bergen",
+            "type": "text"
+        },
+        {
+            "id": 1241308351422402612,
+            "name": "essex",
+            "type": "text"
+        },
+        {
+            "id": 1241308344665378816,
+            "name": "Counties ATLANTIC - WARREN",
+            "type": "category"
+        },
+        {
+            "id": 1241308354547023992,
+            "name": "hunterdon",
+            "type": "text"
+        },
+        {
+            "id": 1241308366630944780,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241308341116993546,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241308358460309599,
+            "name": "morris",
+            "type": "text"
+        },
+        {
+            "id": 1241308362621321216,
+            "name": "somerset",
+            "type": "text"
+        },
+        {
+            "id": 1241308349287497799,
+            "name": "cumberland",
+            "type": "text"
+        },
+        {
+            "id": 1241308367675326474,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241308359307694161,
+            "name": "ocean",
+            "type": "text"
+        },
+        {
+            "id": 1241308361757298718,
+            "name": "salem",
+            "type": "text"
+        },
+        {
+            "id": 1241308343667134464,
+            "name": "memes",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241308080759640114,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241308337648308244,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241308336851259482,
+            "name": "Member"
+        },
+        {
+            "id": 1241308336096411771,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241308335362408500,
+            "name": "Admin"
+        },
+        {
+            "id": 1241308292525985816,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241308239799255043,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241308106814783538,
+            "name": "Admin"
+        }
+    ]
+}

@@ -1,0 +1,432 @@
+{
+    "name": "LA WINS",
+    "id": 1241301737512370267,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:10:36.538000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241302037140865106,
+            "name": "east-carroll",
+            "type": "text"
+        },
+        {
+            "id": 1241302069130825779,
+            "name": "richland",
+            "type": "text"
+        },
+        {
+            "id": 1241302072616292402,
+            "name": "saint-james",
+            "type": "text"
+        },
+        {
+            "id": 1241302075720073336,
+            "name": "saint-mary",
+            "type": "text"
+        },
+        {
+            "id": 1241302019583508571,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241302084826169405,
+            "name": "vermilion",
+            "type": "text"
+        },
+        {
+            "id": 1241302043402965114,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241302020762370098,
+            "name": "acadia",
+            "type": "text"
+        },
+        {
+            "id": 1241302024964804720,
+            "name": "bienville",
+            "type": "text"
+        },
+        {
+            "id": 1241302013946363994,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241302091973005377,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241302060025253908,
+            "name": "plaquemines",
+            "type": "text"
+        },
+        {
+            "id": 1241302087875166259,
+            "name": "west-baton-rouge",
+            "type": "text"
+        },
+        {
+            "id": 1241302042362908723,
+            "name": "iberia",
+            "type": "text"
+        },
+        {
+            "id": 1241302028223905802,
+            "name": "caddo",
+            "type": "text"
+        },
+        {
+            "id": 1241302023312379966,
+            "name": "avoyelles",
+            "type": "text"
+        },
+        {
+            "id": 1241302070636843028,
+            "name": "saint-bernard",
+            "type": "text"
+        },
+        {
+            "id": 1241302089246838836,
+            "name": "west-feliciana",
+            "type": "text"
+        },
+        {
+            "id": 1241302077846851665,
+            "name": "saint-tammany",
+            "type": "text"
+        },
+        {
+            "id": 1241302071366389760,
+            "name": "saint-charles",
+            "type": "text"
+        },
+        {
+            "id": 1241302081764331581,
+            "name": "terrebonne",
+            "type": "text"
+        },
+        {
+            "id": 1241302034028691527,
+            "name": "claiborne",
+            "type": "text"
+        },
+        {
+            "id": 1241302022087512135,
+            "name": "ascension",
+            "type": "text"
+        },
+        {
+            "id": 1241302049627443283,
+            "name": "jefferson-davis",
+            "type": "text"
+        },
+        {
+            "id": 1241302054475923536,
+            "name": "livingston",
+            "type": "text"
+        },
+        {
+            "id": 1241302057290301490,
+            "name": "natchitoches",
+            "type": "text"
+        },
+        {
+            "id": 1241302015498387466,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241302065356083231,
+            "name": "pointe-coupee",
+            "type": "text"
+        },
+        {
+            "id": 1241302030530773063,
+            "name": "caldwell",
+            "type": "text"
+        },
+        {
+            "id": 1241302056728264765,
+            "name": "morehouse",
+            "type": "text"
+        },
+        {
+            "id": 1241302055482818582,
+            "name": "madison",
+            "type": "text"
+        },
+        {
+            "id": 1241302066094411787,
+            "name": "rapides",
+            "type": "text"
+        },
+        {
+            "id": 1241302090928885812,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241302017385955378,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241302018413432932,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241302034926407690,
+            "name": "concordia",
+            "type": "text"
+        },
+        {
+            "id": 1241302076382908436,
+            "name": "Counties SAINT TAMMANY - WINN",
+            "type": "category"
+        },
+        {
+            "id": 1241302038688829553,
+            "name": "east-feliciana",
+            "type": "text"
+        },
+        {
+            "id": 1241302044460187648,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1241302053158916157,
+            "name": "lincoln",
+            "type": "text"
+        },
+        {
+            "id": 1241302016391905391,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241302083408232499,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1241302024105103360,
+            "name": "beauregard",
+            "type": "text"
+        },
+        {
+            "id": 1241302057844084791,
+            "name": "orleans",
+            "type": "text"
+        },
+        {
+            "id": 1241302022658064414,
+            "name": "assumption",
+            "type": "text"
+        },
+        {
+            "id": 1241302041838620683,
+            "name": "grant",
+            "type": "text"
+        },
+        {
+            "id": 1241302072968613929,
+            "name": "saint-landry",
+            "type": "text"
+        },
+        {
+            "id": 1241302086239522846,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241302035614400542,
+            "name": "de-soto",
+            "type": "text"
+        },
+        {
+            "id": 1241302051405824060,
+            "name": "lafayette",
+            "type": "text"
+        },
+        {
+            "id": 1241302026336342119,
+            "name": "bossier",
+            "type": "text"
+        },
+        {
+            "id": 1241302040920068106,
+            "name": "franklin",
+            "type": "text"
+        },
+        {
+            "id": 1241302088487669810,
+            "name": "west-carroll",
+            "type": "text"
+        },
+        {
+            "id": 1241302033059811429,
+            "name": "catahoula",
+            "type": "text"
+        },
+        {
+            "id": 1241302050415972424,
+            "name": "la-salle",
+            "type": "text"
+        },
+        {
+            "id": 1241302031533211721,
+            "name": "cameron",
+            "type": "text"
+        },
+        {
+            "id": 1241302085551521833,
+            "name": "vernon",
+            "type": "text"
+        },
+        {
+            "id": 1241302074105401434,
+            "name": "saint-martin",
+            "type": "text"
+        },
+        {
+            "id": 1241302087166464073,
+            "name": "webster",
+            "type": "text"
+        },
+        {
+            "id": 1241302093059326032,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241302052152279120,
+            "name": "lafourche",
+            "type": "text"
+        },
+        {
+            "id": 1241302020023914529,
+            "name": "Counties ACADIA - SAINT MARY",
+            "type": "category"
+        },
+        {
+            "id": 1241302072029351956,
+            "name": "saint-helena",
+            "type": "text"
+        },
+        {
+            "id": 1241302014873567282,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241302042929139794,
+            "name": "iberville",
+            "type": "text"
+        },
+        {
+            "id": 1241302067809882173,
+            "name": "red-river",
+            "type": "text"
+        },
+        {
+            "id": 1241302039653388339,
+            "name": "evangeline",
+            "type": "text"
+        },
+        {
+            "id": 1241302080766087169,
+            "name": "tensas",
+            "type": "text"
+        },
+        {
+            "id": 1241302012919025674,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241302058976411688,
+            "name": "ouachita",
+            "type": "text"
+        },
+        {
+            "id": 1241302079717376083,
+            "name": "tangipahoa",
+            "type": "text"
+        },
+        {
+            "id": 1241302079109201931,
+            "name": "st-john-the-baptist",
+            "type": "text"
+        },
+        {
+            "id": 1241302029293322291,
+            "name": "calcasieu",
+            "type": "text"
+        },
+        {
+            "id": 1241302090211397693,
+            "name": "winn",
+            "type": "text"
+        },
+        {
+            "id": 1241302021496246283,
+            "name": "allen",
+            "type": "text"
+        },
+        {
+            "id": 1241302069705572412,
+            "name": "sabine",
+            "type": "text"
+        },
+        {
+            "id": 1241302036423639071,
+            "name": "east-baton-rouge",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241301737512370267,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241302012113457232,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241302011144568873,
+            "name": "Member"
+        },
+        {
+            "id": 1241302009936609311,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241302009349541888,
+            "name": "Admin"
+        },
+        {
+            "id": 1241301979439824926,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241301905112830085,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241301779799605289,
+            "name": "Admin"
+        }
+    ]
+}

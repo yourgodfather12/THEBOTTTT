@@ -1,0 +1,402 @@
+{
+    "name": "CA WINS",
+    "id": 1241296744214695997,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T07:50:46.116000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241297010728898580,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241297068803362877,
+            "name": "santa-barbara",
+            "type": "text"
+        },
+        {
+            "id": 1241297067129831485,
+            "name": "san-luis-obispo",
+            "type": "text"
+        },
+        {
+            "id": 1241297050021269576,
+            "name": "nevada",
+            "type": "text"
+        },
+        {
+            "id": 1241297015653138542,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241297017263882380,
+            "name": "Counties ALAMEDA - STANISLAUS",
+            "type": "category"
+        },
+        {
+            "id": 1241297021277835315,
+            "name": "amador",
+            "type": "text"
+        },
+        {
+            "id": 1241297087946166326,
+            "name": "tulare",
+            "type": "text"
+        },
+        {
+            "id": 1241297053896937542,
+            "name": "riverside",
+            "type": "text"
+        },
+        {
+            "id": 1241297045260730398,
+            "name": "merced",
+            "type": "text"
+        },
+        {
+            "id": 1241297092937388035,
+            "name": "yuba",
+            "type": "text"
+        },
+        {
+            "id": 1241297031704870922,
+            "name": "imperial",
+            "type": "text"
+        },
+        {
+            "id": 1241297094124241006,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241297039686500423,
+            "name": "los-angeles",
+            "type": "text"
+        },
+        {
+            "id": 1241297071454158921,
+            "name": "shasta",
+            "type": "text"
+        },
+        {
+            "id": 1241297027598389260,
+            "name": "fresno",
+            "type": "text"
+        },
+        {
+            "id": 1241297013275103284,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241297050910330940,
+            "name": "orange",
+            "type": "text"
+        },
+        {
+            "id": 1241297035471224913,
+            "name": "kings",
+            "type": "text"
+        },
+        {
+            "id": 1241297064369848361,
+            "name": "san-diego",
+            "type": "text"
+        },
+        {
+            "id": 1241297042865913856,
+            "name": "mariposa",
+            "type": "text"
+        },
+        {
+            "id": 1241297071181529088,
+            "name": "santa-cruz",
+            "type": "text"
+        },
+        {
+            "id": 1241297022854762528,
+            "name": "calaveras",
+            "type": "text"
+        },
+        {
+            "id": 1241297048591142992,
+            "name": "napa",
+            "type": "text"
+        },
+        {
+            "id": 1241297044014895203,
+            "name": "mendocino",
+            "type": "text"
+        },
+        {
+            "id": 1241297070095077508,
+            "name": "santa-clara",
+            "type": "text"
+        },
+        {
+            "id": 1241297034586230795,
+            "name": "kern",
+            "type": "text"
+        },
+        {
+            "id": 1241297014310834318,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241297014936043561,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241297084276146214,
+            "name": "sutter",
+            "type": "text"
+        },
+        {
+            "id": 1241297029028909126,
+            "name": "glenn",
+            "type": "text"
+        },
+        {
+            "id": 1241297064982216766,
+            "name": "san-francisco",
+            "type": "text"
+        },
+        {
+            "id": 1241297036255428692,
+            "name": "lake",
+            "type": "text"
+        },
+        {
+            "id": 1241297030190731324,
+            "name": "humboldt",
+            "type": "text"
+        },
+        {
+            "id": 1241297019071627364,
+            "name": "alpine",
+            "type": "text"
+        },
+        {
+            "id": 1241297041175609405,
+            "name": "marin",
+            "type": "text"
+        },
+        {
+            "id": 1241297096489963540,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241297089623756811,
+            "name": "tuolumne",
+            "type": "text"
+        },
+        {
+            "id": 1241297022263365683,
+            "name": "butte",
+            "type": "text"
+        },
+        {
+            "id": 1241297011731595346,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241297018077446175,
+            "name": "alameda",
+            "type": "text"
+        },
+        {
+            "id": 1241297062541266996,
+            "name": "san-bernardino",
+            "type": "text"
+        },
+        {
+            "id": 1241297067905777676,
+            "name": "san-mateo",
+            "type": "text"
+        },
+        {
+            "id": 1241297060062429205,
+            "name": "sacramento",
+            "type": "text"
+        },
+        {
+            "id": 1241297066299359252,
+            "name": "san-joaquin",
+            "type": "text"
+        },
+        {
+            "id": 1241297081822351390,
+            "name": "sonoma",
+            "type": "text"
+        },
+        {
+            "id": 1241297033336328211,
+            "name": "inyo",
+            "type": "text"
+        },
+        {
+            "id": 1241297095244382249,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241297012641497109,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241297085509406755,
+            "name": "tehama",
+            "type": "text"
+        },
+        {
+            "id": 1241297092157374484,
+            "name": "yolo",
+            "type": "text"
+        },
+        {
+            "id": 1241297083261128787,
+            "name": "Counties SUTTER - YUBA",
+            "type": "category"
+        },
+        {
+            "id": 1241297051896254527,
+            "name": "placer",
+            "type": "text"
+        },
+        {
+            "id": 1241297052777058347,
+            "name": "plumas",
+            "type": "text"
+        },
+        {
+            "id": 1241297026767917128,
+            "name": "el-dorado",
+            "type": "text"
+        },
+        {
+            "id": 1241297087187124307,
+            "name": "trinity",
+            "type": "text"
+        },
+        {
+            "id": 1241297080912318535,
+            "name": "solano",
+            "type": "text"
+        },
+        {
+            "id": 1241297046833729656,
+            "name": "mono",
+            "type": "text"
+        },
+        {
+            "id": 1241297046074425394,
+            "name": "modoc",
+            "type": "text"
+        },
+        {
+            "id": 1241297061115203646,
+            "name": "san-benito",
+            "type": "text"
+        },
+        {
+            "id": 1241297038952501248,
+            "name": "lassen",
+            "type": "text"
+        },
+        {
+            "id": 1241297077405880330,
+            "name": "sierra",
+            "type": "text"
+        },
+        {
+            "id": 1241297024922685480,
+            "name": "contra-costa",
+            "type": "text"
+        },
+        {
+            "id": 1241297016462774272,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241297040357593149,
+            "name": "madera",
+            "type": "text"
+        },
+        {
+            "id": 1241297082699092000,
+            "name": "stanislaus",
+            "type": "text"
+        },
+        {
+            "id": 1241297026126315562,
+            "name": "del-norte",
+            "type": "text"
+        },
+        {
+            "id": 1241297079251243048,
+            "name": "siskiyou",
+            "type": "text"
+        },
+        {
+            "id": 1241297047655546943,
+            "name": "monterey",
+            "type": "text"
+        },
+        {
+            "id": 1241297023890751591,
+            "name": "colusa",
+            "type": "text"
+        },
+        {
+            "id": 1241297090710212621,
+            "name": "ventura",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241296744214695997,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241297008590061611,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241297008111652944,
+            "name": "Member"
+        },
+        {
+            "id": 1241297007386169376,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241297006840905758,
+            "name": "Admin"
+        },
+        {
+            "id": 1241296959067787349,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241296912213086352,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241296771628666900,
+            "name": "Admin"
+        }
+    ]
+}

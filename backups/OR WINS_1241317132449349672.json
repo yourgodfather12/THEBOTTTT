@@ -1,0 +1,287 @@
+{
+    "name": "OR WINS",
+    "id": 1241317132449349672,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T09:11:52.166000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241317465636737035,
+            "name": "umatilla",
+            "type": "text"
+        },
+        {
+            "id": 1241317456841146419,
+            "name": "lake",
+            "type": "text"
+        },
+        {
+            "id": 1241317441275953254,
+            "name": "Counties BAKER - YAMHILL",
+            "type": "category"
+        },
+        {
+            "id": 1241317435509051412,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241317441662095381,
+            "name": "baker",
+            "type": "text"
+        },
+        {
+            "id": 1241317461966585866,
+            "name": "morrow",
+            "type": "text"
+        },
+        {
+            "id": 1241317468509700110,
+            "name": "wasco",
+            "type": "text"
+        },
+        {
+            "id": 1241317454651723819,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1241317446414106706,
+            "name": "coos",
+            "type": "text"
+        },
+        {
+            "id": 1241317453624246325,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241317452512755744,
+            "name": "harney",
+            "type": "text"
+        },
+        {
+            "id": 1241317433525014669,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241317447588646942,
+            "name": "crook",
+            "type": "text"
+        },
+        {
+            "id": 1241317440747601920,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241317453125128233,
+            "name": "hood-river",
+            "type": "text"
+        },
+        {
+            "id": 1241317445084385313,
+            "name": "clatsop",
+            "type": "text"
+        },
+        {
+            "id": 1241317463577333790,
+            "name": "polk",
+            "type": "text"
+        },
+        {
+            "id": 1241317460427407431,
+            "name": "malheur",
+            "type": "text"
+        },
+        {
+            "id": 1241317451241750559,
+            "name": "gilliam",
+            "type": "text"
+        },
+        {
+            "id": 1241317470615109732,
+            "name": "wheeler",
+            "type": "text"
+        },
+        {
+            "id": 1241317458007298089,
+            "name": "lane",
+            "type": "text"
+        },
+        {
+            "id": 1241317471319756902,
+            "name": "yamhill",
+            "type": "text"
+        },
+        {
+            "id": 1241317467079311390,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1241317436393787423,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241317459781488690,
+            "name": "linn",
+            "type": "text"
+        },
+        {
+            "id": 1241317462750793730,
+            "name": "multnomah",
+            "type": "text"
+        },
+        {
+            "id": 1241317448498806848,
+            "name": "deschutes",
+            "type": "text"
+        },
+        {
+            "id": 1241317442743963720,
+            "name": "benton",
+            "type": "text"
+        },
+        {
+            "id": 1241317446011322410,
+            "name": "columbia",
+            "type": "text"
+        },
+        {
+            "id": 1241317464357343336,
+            "name": "sherman",
+            "type": "text"
+        },
+        {
+            "id": 1241317437119660083,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241317467876495422,
+            "name": "wallowa",
+            "type": "text"
+        },
+        {
+            "id": 1241317448179912785,
+            "name": "curry",
+            "type": "text"
+        },
+        {
+            "id": 1241317439652892706,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241317473270370395,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241317464990552084,
+            "name": "tillamook",
+            "type": "text"
+        },
+        {
+            "id": 1241317473689796629,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241317456299950151,
+            "name": "klamath",
+            "type": "text"
+        },
+        {
+            "id": 1241317443503128588,
+            "name": "clackamas",
+            "type": "text"
+        },
+        {
+            "id": 1241317434863128597,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241317455578665050,
+            "name": "josephine",
+            "type": "text"
+        },
+        {
+            "id": 1241317438315040828,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241317451807981678,
+            "name": "grant",
+            "type": "text"
+        },
+        {
+            "id": 1241317469549760527,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241317450226864168,
+            "name": "douglas",
+            "type": "text"
+        },
+        {
+            "id": 1241317472146161755,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241317461215678476,
+            "name": "marion",
+            "type": "text"
+        },
+        {
+            "id": 1241317459089293312,
+            "name": "lincoln",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241317132449349672,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241317432803725343,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241317432275238962,
+            "name": "Member"
+        },
+        {
+            "id": 1241317431582920724,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241317431008559164,
+            "name": "Admin"
+        },
+        {
+            "id": 1241317375949668382,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241317321864253485,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241317188531519499,
+            "name": "Admin"
+        }
+    ]
+}

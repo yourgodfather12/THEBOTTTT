@@ -1,0 +1,182 @@
+{
+    "name": "AZ WINS",
+    "id": 1241295608719872013,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T07:46:53.110000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241296069464293437,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241296070408011846,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241296071247007877,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241296072484065290,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241296072819605546,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241296073981562900,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241296075000647760,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241296081019600999,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241296081841688647,
+            "name": "Counties APACHE - YUMA",
+            "type": "category"
+        },
+        {
+            "id": 1241296083682983966,
+            "name": "apache",
+            "type": "text"
+        },
+        {
+            "id": 1241296084878360667,
+            "name": "cochise",
+            "type": "text"
+        },
+        {
+            "id": 1241296085750906922,
+            "name": "coconino",
+            "type": "text"
+        },
+        {
+            "id": 1241296086853746718,
+            "name": "gila",
+            "type": "text"
+        },
+        {
+            "id": 1241296087357329410,
+            "name": "graham",
+            "type": "text"
+        },
+        {
+            "id": 1241296089009618954,
+            "name": "greenlee",
+            "type": "text"
+        },
+        {
+            "id": 1241296089764593758,
+            "name": "la-paz",
+            "type": "text"
+        },
+        {
+            "id": 1241296090909769728,
+            "name": "maricopa",
+            "type": "text"
+        },
+        {
+            "id": 1241296091643904064,
+            "name": "mohave",
+            "type": "text"
+        },
+        {
+            "id": 1241296092558266388,
+            "name": "navajo",
+            "type": "text"
+        },
+        {
+            "id": 1241296093376020597,
+            "name": "pima",
+            "type": "text"
+        },
+        {
+            "id": 1241296094789632021,
+            "name": "pinal",
+            "type": "text"
+        },
+        {
+            "id": 1241296095699537930,
+            "name": "santa-cruz",
+            "type": "text"
+        },
+        {
+            "id": 1241296096408375326,
+            "name": "yavapai",
+            "type": "text"
+        },
+        {
+            "id": 1241296102175674408,
+            "name": "yuma",
+            "type": "text"
+        },
+        {
+            "id": 1241296103132102656,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241296103798734858,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241296104092602379,
+            "name": "log",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241295608719872013,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241296068713385994,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241296067673460800,
+            "name": "Member"
+        },
+        {
+            "id": 1241296066985463921,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241296065882357872,
+            "name": "Admin"
+        },
+        {
+            "id": 1241296004431609880,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241295934793584714,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241295732024152065,
+            "name": "Admin"
+        }
+    ]
+}

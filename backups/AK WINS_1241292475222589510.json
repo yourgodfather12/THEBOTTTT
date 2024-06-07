@@ -1,0 +1,248 @@
+{
+    "name": "AK WINS",
+    "id": 1241292475222589510,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T07:34:02.009000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241293663510724618,
+            "name": "kenai-peninsula",
+            "type": "text"
+        },
+        {
+            "id": 1241293665624916030,
+            "name": "lake-and-peninsula",
+            "type": "text"
+        },
+        {
+            "id": 1241293680753774613,
+            "name": "wrangell",
+            "type": "text"
+        },
+        {
+            "id": 1241293684755136554,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241293664685396028,
+            "name": "kodiak-island",
+            "type": "text"
+        },
+        {
+            "id": 1241293658893062186,
+            "name": "dillingham",
+            "type": "text"
+        },
+        {
+            "id": 1241293646809141259,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241293658028773437,
+            "name": "denali",
+            "type": "text"
+        },
+        {
+            "id": 1241293680032088094,
+            "name": "wade-hampton",
+            "type": "text"
+        },
+        {
+            "id": 1241293678505627759,
+            "name": "southeast-fairbanks",
+            "type": "text"
+        },
+        {
+            "id": 1241293667210366986,
+            "name": "matanuska-susitna",
+            "type": "text"
+        },
+        {
+            "id": 1241293646150766682,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241293677511577631,
+            "name": "skagway",
+            "type": "text"
+        },
+        {
+            "id": 1241293671618576406,
+            "name": "prince-of-wales-hyder",
+            "type": "text"
+        },
+        {
+            "id": 1241293655638278195,
+            "name": "anchorage",
+            "type": "text"
+        },
+        {
+            "id": 1241293650986537081,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241293669219176451,
+            "name": "northwest-arctic",
+            "type": "text"
+        },
+        {
+            "id": 1241293679428374568,
+            "name": "valdez-cordova",
+            "type": "text"
+        },
+        {
+            "id": 1241293649787097119,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241293649074196540,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241293659882917968,
+            "name": "fairbanks-north-star",
+            "type": "text"
+        },
+        {
+            "id": 1241293656762351636,
+            "name": "bethel",
+            "type": "text"
+        },
+        {
+            "id": 1241293652907659286,
+            "name": "Counties ALEUTIANS EAST - YUKON KOYUKUK",
+            "type": "category"
+        },
+        {
+            "id": 1241293682683154452,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241293653956100147,
+            "name": "aleutians-east",
+            "type": "text"
+        },
+        {
+            "id": 1241293684184580196,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241293660507865139,
+            "name": "haines",
+            "type": "text"
+        },
+        {
+            "id": 1241293651976650805,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241293644426776616,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241293664139874376,
+            "name": "ketchikan-gateway",
+            "type": "text"
+        },
+        {
+            "id": 1241293654723788811,
+            "name": "aleutians-west",
+            "type": "text"
+        },
+        {
+            "id": 1241293670783909888,
+            "name": "petersburg",
+            "type": "text"
+        },
+        {
+            "id": 1241293662646702091,
+            "name": "juneau",
+            "type": "text"
+        },
+        {
+            "id": 1241293676592758896,
+            "name": "sitka",
+            "type": "text"
+        },
+        {
+            "id": 1241293668938416190,
+            "name": "north-slope",
+            "type": "text"
+        },
+        {
+            "id": 1241293682028576868,
+            "name": "yukon-koyukuk",
+            "type": "text"
+        },
+        {
+            "id": 1241293644926025799,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241293661636132879,
+            "name": "hoonah-angoon",
+            "type": "text"
+        },
+        {
+            "id": 1241293657408012369,
+            "name": "bristol-bay",
+            "type": "text"
+        },
+        {
+            "id": 1241293667927326765,
+            "name": "nome",
+            "type": "text"
+        },
+        {
+            "id": 1241293681013817385,
+            "name": "yakutat",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241292475222589510,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241293643915198475,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241293642480619612,
+            "name": "Member"
+        },
+        {
+            "id": 1241293641603879057,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241293640916275230,
+            "name": "Admin"
+        },
+        {
+            "id": 1241293043211046955,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241292700259455070,
+            "name": "TheDude"
+        }
+    ]
+}

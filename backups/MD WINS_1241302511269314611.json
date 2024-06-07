@@ -1,0 +1,227 @@
+{
+    "name": "MD WINS",
+    "id": 1241302511269314611,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:13:49.307000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241302844154576958,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241302819282092035,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241302821287231529,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241302838836072478,
+            "name": "queen-annes",
+            "type": "text"
+        },
+        {
+            "id": 1241302826274127916,
+            "name": "baltimore-city",
+            "type": "text"
+        },
+        {
+            "id": 1241302827481956363,
+            "name": "calvert",
+            "type": "text"
+        },
+        {
+            "id": 1241302825649176587,
+            "name": "baltimore",
+            "type": "text"
+        },
+        {
+            "id": 1241302845538701322,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241302841726078987,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241302835103137875,
+            "name": "howard",
+            "type": "text"
+        },
+        {
+            "id": 1241302818195767378,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241302824151941161,
+            "name": "allegany",
+            "type": "text"
+        },
+        {
+            "id": 1241302828299976715,
+            "name": "carroll",
+            "type": "text"
+        },
+        {
+            "id": 1241302830770552863,
+            "name": "dorchester",
+            "type": "text"
+        },
+        {
+            "id": 1241302837993017374,
+            "name": "prince-georges",
+            "type": "text"
+        },
+        {
+            "id": 1241302843428700271,
+            "name": "worcester",
+            "type": "text"
+        },
+        {
+            "id": 1241302834230726751,
+            "name": "harford",
+            "type": "text"
+        },
+        {
+            "id": 1241302831529590876,
+            "name": "frederick",
+            "type": "text"
+        },
+        {
+            "id": 1241302818774581269,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241302820326735922,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241302822872420424,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241302842539638895,
+            "name": "wicomico",
+            "type": "text"
+        },
+        {
+            "id": 1241302828106907678,
+            "name": "caroline",
+            "type": "text"
+        },
+        {
+            "id": 1241302829424054273,
+            "name": "cecil",
+            "type": "text"
+        },
+        {
+            "id": 1241302824797863946,
+            "name": "anne-arundel",
+            "type": "text"
+        },
+        {
+            "id": 1241302822121635892,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241302830409846855,
+            "name": "charles",
+            "type": "text"
+        },
+        {
+            "id": 1241302837460467813,
+            "name": "montgomery",
+            "type": "text"
+        },
+        {
+            "id": 1241302844779532318,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241302836839714917,
+            "name": "kent",
+            "type": "text"
+        },
+        {
+            "id": 1241302817319419966,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241302840807395400,
+            "name": "talbot",
+            "type": "text"
+        },
+        {
+            "id": 1241302839620407377,
+            "name": "saint-marys",
+            "type": "text"
+        },
+        {
+            "id": 1241302833047932948,
+            "name": "garrett",
+            "type": "text"
+        },
+        {
+            "id": 1241302840417456220,
+            "name": "somerset",
+            "type": "text"
+        },
+        {
+            "id": 1241302823585714176,
+            "name": "Counties ALLEGANY - WORCESTER",
+            "type": "category"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241302511269314611,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241302816627228753,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241302816040026163,
+            "name": "Member"
+        },
+        {
+            "id": 1241302815045980294,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241302814366502952,
+            "name": "Admin"
+        },
+        {
+            "id": 1241302770800267387,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241302713673846816,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241302564356489297,
+            "name": "Admin"
+        }
+    ]
+}

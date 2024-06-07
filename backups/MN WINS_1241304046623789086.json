@@ -1,0 +1,547 @@
+{
+    "name": "MN WINS",
+    "id": 1241304046623789086,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:19:53.322000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241304474627215360,
+            "name": "kandiyohi",
+            "type": "text"
+        },
+        {
+            "id": 1241304492016926750,
+            "name": "murray",
+            "type": "text"
+        },
+        {
+            "id": 1241304473062739969,
+            "name": "kanabec",
+            "type": "text"
+        },
+        {
+            "id": 1241304502334656534,
+            "name": "polk",
+            "type": "text"
+        },
+        {
+            "id": 1241304525604786206,
+            "name": "wabasha",
+            "type": "text"
+        },
+        {
+            "id": 1241304471728816158,
+            "name": "itasca",
+            "type": "text"
+        },
+        {
+            "id": 1241304529157361674,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241304503232495718,
+            "name": "pope",
+            "type": "text"
+        },
+        {
+            "id": 1241304455429750784,
+            "name": "clay",
+            "type": "text"
+        },
+        {
+            "id": 1241304517056659526,
+            "name": "stearns",
+            "type": "text"
+        },
+        {
+            "id": 1241304450954428496,
+            "name": "carver",
+            "type": "text"
+        },
+        {
+            "id": 1241304510903877715,
+            "name": "rock",
+            "type": "text"
+        },
+        {
+            "id": 1241304531795710022,
+            "name": "wilkin",
+            "type": "text"
+        },
+        {
+            "id": 1241304499566411837,
+            "name": "pennington",
+            "type": "text"
+        },
+        {
+            "id": 1241304472454434856,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241304437180334110,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241304506298535978,
+            "name": "redwood",
+            "type": "text"
+        },
+        {
+            "id": 1241304448941162616,
+            "name": "blue-earth",
+            "type": "text"
+        },
+        {
+            "id": 1241304498815635510,
+            "name": "otter-tail",
+            "type": "text"
+        },
+        {
+            "id": 1241304447930466465,
+            "name": "big-stone",
+            "type": "text"
+        },
+        {
+            "id": 1241304489613459509,
+            "name": "morrison",
+            "type": "text"
+        },
+        {
+            "id": 1241304443744555068,
+            "name": "becker",
+            "type": "text"
+        },
+        {
+            "id": 1241304512891846677,
+            "name": "saint-louis",
+            "type": "text"
+        },
+        {
+            "id": 1241304467253628968,
+            "name": "houston",
+            "type": "text"
+        },
+        {
+            "id": 1241304477508833331,
+            "name": "lac-qui-parle",
+            "type": "text"
+        },
+        {
+            "id": 1241304439839789146,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241304487659048970,
+            "name": "meeker",
+            "type": "text"
+        },
+        {
+            "id": 1241304514410188822,
+            "name": "sherburne",
+            "type": "text"
+        },
+        {
+            "id": 1241304435418992691,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241304443031388201,
+            "name": "anoka",
+            "type": "text"
+        },
+        {
+            "id": 1241304513709871125,
+            "name": "scott",
+            "type": "text"
+        },
+        {
+            "id": 1241304454423380028,
+            "name": "chisago",
+            "type": "text"
+        },
+        {
+            "id": 1241304483527524484,
+            "name": "mahnomen",
+            "type": "text"
+        },
+        {
+            "id": 1241304527735357570,
+            "name": "waseca",
+            "type": "text"
+        },
+        {
+            "id": 1241304515790245908,
+            "name": "sibley",
+            "type": "text"
+        },
+        {
+            "id": 1241304519581634650,
+            "name": "stevens",
+            "type": "text"
+        },
+        {
+            "id": 1241304520982659104,
+            "name": "todd",
+            "type": "text"
+        },
+        {
+            "id": 1241304435938820160,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241304459745951827,
+            "name": "dodge",
+            "type": "text"
+        },
+        {
+            "id": 1241304490359918612,
+            "name": "mower",
+            "type": "text"
+        },
+        {
+            "id": 1241304518570938429,
+            "name": "steele",
+            "type": "text"
+        },
+        {
+            "id": 1241304441987268609,
+            "name": "aitkin",
+            "type": "text"
+        },
+        {
+            "id": 1241304533590736908,
+            "name": "wright",
+            "type": "text"
+        },
+        {
+            "id": 1241304449620639764,
+            "name": "brown",
+            "type": "text"
+        },
+        {
+            "id": 1241304440733175929,
+            "name": "Counties AITKIN - MOWER",
+            "type": "category"
+        },
+        {
+            "id": 1241304497901404214,
+            "name": "olmsted",
+            "type": "text"
+        },
+        {
+            "id": 1241304457761919059,
+            "name": "cottonwood",
+            "type": "text"
+        },
+        {
+            "id": 1241304480184537118,
+            "name": "lake-of-the-woods",
+            "type": "text"
+        },
+        {
+            "id": 1241304450312835103,
+            "name": "carlton",
+            "type": "text"
+        },
+        {
+            "id": 1241304476703264849,
+            "name": "koochiching",
+            "type": "text"
+        },
+        {
+            "id": 1241304460891000896,
+            "name": "douglas",
+            "type": "text"
+        },
+        {
+            "id": 1241304485926670366,
+            "name": "martin",
+            "type": "text"
+        },
+        {
+            "id": 1241304500200017931,
+            "name": "pine",
+            "type": "text"
+        },
+        {
+            "id": 1241304526414417920,
+            "name": "wadena",
+            "type": "text"
+        },
+        {
+            "id": 1241304464003170315,
+            "name": "goodhue",
+            "type": "text"
+        },
+        {
+            "id": 1241304484857122816,
+            "name": "marshall",
+            "type": "text"
+        },
+        {
+            "id": 1241304481925173248,
+            "name": "lincoln",
+            "type": "text"
+        },
+        {
+            "id": 1241304456369410088,
+            "name": "clearwater",
+            "type": "text"
+        },
+        {
+            "id": 1241304451722248252,
+            "name": "cass",
+            "type": "text"
+        },
+        {
+            "id": 1241304504205447249,
+            "name": "ramsey",
+            "type": "text"
+        },
+        {
+            "id": 1241304532525252629,
+            "name": "winona",
+            "type": "text"
+        },
+        {
+            "id": 1241304537751621652,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241304535608070224,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241304471040950302,
+            "name": "isanti",
+            "type": "text"
+        },
+        {
+            "id": 1241304468163657818,
+            "name": "hubbard",
+            "type": "text"
+        },
+        {
+            "id": 1241304529828581410,
+            "name": "watonwan",
+            "type": "text"
+        },
+        {
+            "id": 1241304496601174047,
+            "name": "norman",
+            "type": "text"
+        },
+        {
+            "id": 1241304481287639121,
+            "name": "le-sueur",
+            "type": "text"
+        },
+        {
+            "id": 1241304457044693012,
+            "name": "cook",
+            "type": "text"
+        },
+        {
+            "id": 1241304505341972570,
+            "name": "red-lake",
+            "type": "text"
+        },
+        {
+            "id": 1241304534907621397,
+            "name": "yellow-medicine",
+            "type": "text"
+        },
+        {
+            "id": 1241304446516985918,
+            "name": "benton",
+            "type": "text"
+        },
+        {
+            "id": 1241304511872761947,
+            "name": "roseau",
+            "type": "text"
+        },
+        {
+            "id": 1241304508286369873,
+            "name": "rice",
+            "type": "text"
+        },
+        {
+            "id": 1241304475759673425,
+            "name": "kittson",
+            "type": "text"
+        },
+        {
+            "id": 1241304491161026640,
+            "name": "Counties MURRAY - YELLOW MEDICINE",
+            "type": "category"
+        },
+        {
+            "id": 1241304434806489109,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241304434164760576,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241304478641164369,
+            "name": "lake",
+            "type": "text"
+        },
+        {
+            "id": 1241304459150360656,
+            "name": "dakota",
+            "type": "text"
+        },
+        {
+            "id": 1241304438942076978,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241304461637451868,
+            "name": "faribault",
+            "type": "text"
+        },
+        {
+            "id": 1241304458516893787,
+            "name": "crow-wing",
+            "type": "text"
+        },
+        {
+            "id": 1241304444851716177,
+            "name": "beltrami",
+            "type": "text"
+        },
+        {
+            "id": 1241304482906636298,
+            "name": "lyon",
+            "type": "text"
+        },
+        {
+            "id": 1241304507569405992,
+            "name": "renville",
+            "type": "text"
+        },
+        {
+            "id": 1241304466460901377,
+            "name": "hennepin",
+            "type": "text"
+        },
+        {
+            "id": 1241304486421594134,
+            "name": "mcleod",
+            "type": "text"
+        },
+        {
+            "id": 1241304523398451270,
+            "name": "traverse",
+            "type": "text"
+        },
+        {
+            "id": 1241304464707817623,
+            "name": "grant",
+            "type": "text"
+        },
+        {
+            "id": 1241304462241304577,
+            "name": "fillmore",
+            "type": "text"
+        },
+        {
+            "id": 1241304520437268530,
+            "name": "swift",
+            "type": "text"
+        },
+        {
+            "id": 1241304494646755370,
+            "name": "nobles",
+            "type": "text"
+        },
+        {
+            "id": 1241304463071776840,
+            "name": "freeborn",
+            "type": "text"
+        },
+        {
+            "id": 1241304536573018152,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241304488459894857,
+            "name": "mille-lacs",
+            "type": "text"
+        },
+        {
+            "id": 1241304453320282122,
+            "name": "chippewa",
+            "type": "text"
+        },
+        {
+            "id": 1241304500950798428,
+            "name": "pipestone",
+            "type": "text"
+        },
+        {
+            "id": 1241304437943828501,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241304493916946432,
+            "name": "nicollet",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241304046623789086,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241304433170583652,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241304432164208720,
+            "name": "Member"
+        },
+        {
+            "id": 1241304431522349056,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241304430662520846,
+            "name": "Admin"
+        },
+        {
+            "id": 1241304394541039696,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241304240706551858,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241304071852527627,
+            "name": "Admin"
+        }
+    ]
+}

@@ -1,0 +1,751 @@
+{
+    "name": "KY WINS",
+    "id": 1234523847684915220,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-06-05T16:22:02.522000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1237303428141682830,
+            "name": "fleming",
+            "type": "text"
+        },
+        {
+            "id": 1237303423217569802,
+            "name": "edmonson",
+            "type": "text"
+        },
+        {
+            "id": 1237303500355145778,
+            "name": "ohio",
+            "type": "text"
+        },
+        {
+            "id": 1237303449956122636,
+            "name": "henry",
+            "type": "text"
+        },
+        {
+            "id": 1237303477747580958,
+            "name": "lyon",
+            "type": "text"
+        },
+        {
+            "id": 1237303395287568449,
+            "name": "boone",
+            "type": "text"
+        },
+        {
+            "id": 1237303370339975178,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1237303474526359612,
+            "name": "livingston",
+            "type": "text"
+        },
+        {
+            "id": 1237303490641133628,
+            "name": "mercer",
+            "type": "text"
+        },
+        {
+            "id": 1237303415042867241,
+            "name": "christian",
+            "type": "text"
+        },
+        {
+            "id": 1237303400278917132,
+            "name": "breathitt",
+            "type": "text"
+        },
+        {
+            "id": 1237303433015590983,
+            "name": "gallatin",
+            "type": "text"
+        },
+        {
+            "id": 1237303449197088848,
+            "name": "henderson",
+            "type": "text"
+        },
+        {
+            "id": 1237303382675427339,
+            "name": "logs",
+            "type": "text"
+        },
+        {
+            "id": 1237303454230384701,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1237303435540566016,
+            "name": "grant",
+            "type": "text"
+        },
+        {
+            "id": 1237303469950500985,
+            "name": "letcher",
+            "type": "text"
+        },
+        {
+            "id": 1237303519015600180,
+            "name": "simpson",
+            "type": "text"
+        },
+        {
+            "id": 1237303526904954891,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1237303407216295979,
+            "name": "campbell",
+            "type": "text"
+        },
+        {
+            "id": 1237303421904879676,
+            "name": "daviess",
+            "type": "text"
+        },
+        {
+            "id": 1237303489693093948,
+            "name": "menifee",
+            "type": "text"
+        },
+        {
+            "id": 1237303530780627024,
+            "name": "wayne",
+            "type": "text"
+        },
+        {
+            "id": 1237303373196296264,
+            "name": "Counties (Adair-Hart)",
+            "type": "category"
+        },
+        {
+            "id": 1237303386144116736,
+            "name": "mega-dropbox",
+            "type": "text"
+        },
+        {
+            "id": 1237303497519792241,
+            "name": "nelson",
+            "type": "text"
+        },
+        {
+            "id": 1237303390975823992,
+            "name": "ballard",
+            "type": "text"
+        },
+        {
+            "id": 1237303351423537154,
+            "name": "bot",
+            "type": "text"
+        },
+        {
+            "id": 1237303399557500958,
+            "name": "bracken",
+            "type": "text"
+        },
+        {
+            "id": 1237303491790241883,
+            "name": "metcalfe",
+            "type": "text"
+        },
+        {
+            "id": 1237303458563100682,
+            "name": "knott",
+            "type": "text"
+        },
+        {
+            "id": 1237303377210249267,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1237303374467174482,
+            "name": "Counties (Henderson-Pulaski)",
+            "type": "category"
+        },
+        {
+            "id": 1237303441714315264,
+            "name": "hancock",
+            "type": "text"
+        },
+        {
+            "id": 1246654059407212656,
+            "name": "announcements",
+            "type": "text"
+        },
+        {
+            "id": 1237303519879626845,
+            "name": "spencer",
+            "type": "text"
+        },
+        {
+            "id": 1237303487855853589,
+            "name": "mason",
+            "type": "text"
+        },
+        {
+            "id": 1237303420633747456,
+            "name": "cumberland",
+            "type": "text"
+        },
+        {
+            "id": 1237303419589496892,
+            "name": "crittenden",
+            "type": "text"
+        },
+        {
+            "id": 1237303387280637963,
+            "name": "adair",
+            "type": "text"
+        },
+        {
+            "id": 1237303397447630868,
+            "name": "boyd",
+            "type": "text"
+        },
+        {
+            "id": 1237303371501797376,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1237303396520820800,
+            "name": "bourbon",
+            "type": "text"
+        },
+        {
+            "id": 1237303537302769674,
+            "name": "woodford",
+            "type": "text"
+        },
+        {
+            "id": 1237303481354817567,
+            "name": "mclean",
+            "type": "text"
+        },
+        {
+            "id": 1237303525575229511,
+            "name": "trimble",
+            "type": "text"
+        },
+        {
+            "id": 1237303495389085747,
+            "name": "morgan",
+            "type": "text"
+        },
+        {
+            "id": 1237303521729056798,
+            "name": "taylor",
+            "type": "text"
+        },
+        {
+            "id": 1237303509930479658,
+            "name": "powell",
+            "type": "text"
+        },
+        {
+            "id": 1237303429550964848,
+            "name": "floyd",
+            "type": "text"
+        },
+        {
+            "id": 1237303471703851019,
+            "name": "lewis",
+            "type": "text"
+        },
+        {
+            "id": 1237303431992180736,
+            "name": "fulton",
+            "type": "text"
+        },
+        {
+            "id": 1237303391890309181,
+            "name": "barren",
+            "type": "text"
+        },
+        {
+            "id": 1237303504159375454,
+            "name": "owsley",
+            "type": "text"
+        },
+        {
+            "id": 1237303380586528840,
+            "name": "admin",
+            "type": "text"
+        },
+        {
+            "id": 1237303456168153210,
+            "name": "johnson",
+            "type": "text"
+        },
+        {
+            "id": 1237303529438314576,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1237303388341796887,
+            "name": "allen",
+            "type": "text"
+        },
+        {
+            "id": 1237303466335010818,
+            "name": "lee",
+            "type": "text"
+        },
+        {
+            "id": 1237303515123286118,
+            "name": "rowan",
+            "type": "text"
+        },
+        {
+            "id": 1237303444667367476,
+            "name": "hardin",
+            "type": "text"
+        },
+        {
+            "id": 1237303482436948039,
+            "name": "madison",
+            "type": "text"
+        },
+        {
+            "id": 1237303451214417940,
+            "name": "hickman",
+            "type": "text"
+        },
+        {
+            "id": 1237303414137028618,
+            "name": "casey",
+            "type": "text"
+        },
+        {
+            "id": 1237303448282599494,
+            "name": "hart",
+            "type": "text"
+        },
+        {
+            "id": 1237303532277731378,
+            "name": "webster",
+            "type": "text"
+        },
+        {
+            "id": 1237303425914372097,
+            "name": "estill",
+            "type": "text"
+        },
+        {
+            "id": 1237303418260029542,
+            "name": "clinton",
+            "type": "text"
+        },
+        {
+            "id": 1237616080030011464,
+            "name": "other_cords",
+            "type": "text"
+        },
+        {
+            "id": 1237303494474596362,
+            "name": "montgomery",
+            "type": "text"
+        },
+        {
+            "id": 1245935162311577704,
+            "name": "shop",
+            "type": "text"
+        },
+        {
+            "id": 1237303488740851773,
+            "name": "meade",
+            "type": "text"
+        },
+        {
+            "id": 1237303439382544466,
+            "name": "green",
+            "type": "text"
+        },
+        {
+            "id": 1237303518344249344,
+            "name": "shelby",
+            "type": "text"
+        },
+        {
+            "id": 1237303438044434453,
+            "name": "grayson",
+            "type": "text"
+        },
+        {
+            "id": 1237303453345251409,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1237303480356704326,
+            "name": "mccreary",
+            "type": "text"
+        },
+        {
+            "id": 1237303401453457418,
+            "name": "breckinridge",
+            "type": "text"
+        },
+        {
+            "id": 1237303498719236142,
+            "name": "nicholas",
+            "type": "text"
+        },
+        {
+            "id": 1237303385078759516,
+            "name": "requests",
+            "type": "text"
+        },
+        {
+            "id": 1237303434278080523,
+            "name": "garrard",
+            "type": "text"
+        },
+        {
+            "id": 1237303424635109448,
+            "name": "elliott",
+            "type": "text"
+        },
+        {
+            "id": 1237303535964786788,
+            "name": "wolfe",
+            "type": "text"
+        },
+        {
+            "id": 1237303524602155049,
+            "name": "trigg",
+            "type": "text"
+        },
+        {
+            "id": 1237303512262774785,
+            "name": "robertson",
+            "type": "text"
+        },
+        {
+            "id": 1237303392880037970,
+            "name": "bath",
+            "type": "text"
+        },
+        {
+            "id": 1237303375872266270,
+            "name": "Counties (Robertson-Woodford)",
+            "type": "category"
+        },
+        {
+            "id": 1237303398148341771,
+            "name": "boyle",
+            "type": "text"
+        },
+        {
+            "id": 1237303483447902299,
+            "name": "magoffin",
+            "type": "text"
+        },
+        {
+            "id": 1237303412954239047,
+            "name": "carter",
+            "type": "text"
+        },
+        {
+            "id": 1237303517283090504,
+            "name": "scott",
+            "type": "text"
+        },
+        {
+            "id": 1237303457178845224,
+            "name": "kenton",
+            "type": "text"
+        },
+        {
+            "id": 1237303510920335390,
+            "name": "pulaski",
+            "type": "text"
+        },
+        {
+            "id": 1237303475604553769,
+            "name": "logan",
+            "type": "text"
+        },
+        {
+            "id": 1237303527525843007,
+            "name": "warren",
+            "type": "text"
+        },
+        {
+            "id": 1237303455324966933,
+            "name": "jessamine",
+            "type": "text"
+        },
+        {
+            "id": 1237303460060332053,
+            "name": "knox",
+            "type": "text"
+        },
+        {
+            "id": 1237303430842679316,
+            "name": "franklin",
+            "type": "text"
+        },
+        {
+            "id": 1237303404577947713,
+            "name": "caldwell",
+            "type": "text"
+        },
+        {
+            "id": 1237303403596480553,
+            "name": "butler",
+            "type": "text"
+        },
+        {
+            "id": 1237303427038707712,
+            "name": "fayette",
+            "type": "text"
+        },
+        {
+            "id": 1237303492754935839,
+            "name": "monroe",
+            "type": "text"
+        },
+        {
+            "id": 1241321491526848583,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1237303447297069066,
+            "name": "harrison",
+            "type": "text"
+        },
+        {
+            "id": 1237303514028576828,
+            "name": "rockcastle",
+            "type": "text"
+        },
+        {
+            "id": 1237303378217013311,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1237303461545246750,
+            "name": "larue",
+            "type": "text"
+        },
+        {
+            "id": 1237303402439114762,
+            "name": "bullitt",
+            "type": "text"
+        },
+        {
+            "id": 1237303445833252884,
+            "name": "harlan",
+            "type": "text"
+        },
+        {
+            "id": 1237303484462792726,
+            "name": "marion",
+            "type": "text"
+        },
+        {
+            "id": 1237303381714931733,
+            "name": "mod",
+            "type": "text"
+        },
+        {
+            "id": 1237303436597526559,
+            "name": "graves",
+            "type": "text"
+        },
+        {
+            "id": 1237303383963074581,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1237303465273983006,
+            "name": "lawrence",
+            "type": "text"
+        },
+        {
+            "id": 1246205422814101515,
+            "name": "trading",
+            "type": "text"
+        },
+        {
+            "id": 1237303472890839100,
+            "name": "lincoln",
+            "type": "text"
+        },
+        {
+            "id": 1237303486476058697,
+            "name": "martin",
+            "type": "text"
+        },
+        {
+            "id": 1237303503043559514,
+            "name": "owen",
+            "type": "text"
+        },
+        {
+            "id": 1237303516201091082,
+            "name": "russell",
+            "type": "text"
+        },
+        {
+            "id": 1237303501625753621,
+            "name": "oldham",
+            "type": "text"
+        },
+        {
+            "id": 1237303496403976222,
+            "name": "muhlenberg",
+            "type": "text"
+        },
+        {
+            "id": 1237303389574926378,
+            "name": "anderson",
+            "type": "text"
+        },
+        {
+            "id": 1237303462752944178,
+            "name": "laurel",
+            "type": "text"
+        },
+        {
+            "id": 1237303505925046343,
+            "name": "pendleton",
+            "type": "text"
+        },
+        {
+            "id": 1237303533741670493,
+            "name": "whitley",
+            "type": "text"
+        },
+        {
+            "id": 1237303410802561106,
+            "name": "carroll",
+            "type": "text"
+        },
+        {
+            "id": 1237303452313325658,
+            "name": "hopkins",
+            "type": "text"
+        },
+        {
+            "id": 1237303522811318355,
+            "name": "todd",
+            "type": "text"
+        },
+        {
+            "id": 1237303440674258986,
+            "name": "greenup",
+            "type": "text"
+        },
+        {
+            "id": 1237303479358193695,
+            "name": "mccracken",
+            "type": "text"
+        },
+        {
+            "id": 1237303468398481418,
+            "name": "leslie",
+            "type": "text"
+        },
+        {
+            "id": 1237303406398410792,
+            "name": "calloway",
+            "type": "text"
+        },
+        {
+            "id": 1237303416959533056,
+            "name": "clay",
+            "type": "text"
+        },
+        {
+            "id": 1237303507229343755,
+            "name": "perry",
+            "type": "text"
+        },
+        {
+            "id": 1237303408772251710,
+            "name": "carlisle",
+            "type": "text"
+        },
+        {
+            "id": 1237303508387233822,
+            "name": "pike",
+            "type": "text"
+        },
+        {
+            "id": 1237303394402697316,
+            "name": "bell",
+            "type": "text"
+        },
+        {
+            "id": 1237303415659302945,
+            "name": "clark",
+            "type": "text"
+        },
+        {
+            "id": 1237303485377024032,
+            "name": "marshall",
+            "type": "text"
+        },
+        {
+            "id": 1237303379504660480,
+            "name": "verify",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1234523847684915220,
+            "name": "@everyone"
+        },
+        {
+            "id": 1234524096289833112,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1234524092103790683,
+            "name": "Member"
+        },
+        {
+            "id": 1234524090824659055,
+            "name": "VIP"
+        },
+        {
+            "id": 1234524088454615050,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241292788734365720,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1234524087024357417,
+            "name": "Admin"
+        },
+        {
+            "id": 1247834958542803007,
+            "name": "TheDude2.0"
+        },
+        {
+            "id": 1247948559958147146,
+            "name": "TheDude"
+        }
+    ]
+}

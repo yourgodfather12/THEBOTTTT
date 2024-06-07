@@ -1,0 +1,432 @@
+{
+    "name": "CO WINS",
+    "id": 1241297165389664256,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T07:52:27.202000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241297459930730557,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241297496412651540,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1241297456181022773,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241297492499370046,
+            "name": "gunnison",
+            "type": "text"
+        },
+        {
+            "id": 1241297525420589066,
+            "name": "routt",
+            "type": "text"
+        },
+        {
+            "id": 1241297482374185022,
+            "name": "elbert",
+            "type": "text"
+        },
+        {
+            "id": 1241297488627896382,
+            "name": "garfield",
+            "type": "text"
+        },
+        {
+            "id": 1241297510476152833,
+            "name": "logan",
+            "type": "text"
+        },
+        {
+            "id": 1241297536258674691,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241297472626888764,
+            "name": "clear-creek",
+            "type": "text"
+        },
+        {
+            "id": 1241297531158265856,
+            "name": "teller",
+            "type": "text"
+        },
+        {
+            "id": 1241297512200147004,
+            "name": "mineral",
+            "type": "text"
+        },
+        {
+            "id": 1241297497788383264,
+            "name": "kit-carson",
+            "type": "text"
+        },
+        {
+            "id": 1241297509536759872,
+            "name": "lincoln",
+            "type": "text"
+        },
+        {
+            "id": 1241297469376167996,
+            "name": "boulder",
+            "type": "text"
+        },
+        {
+            "id": 1241297498568654932,
+            "name": "la-plata",
+            "type": "text"
+        },
+        {
+            "id": 1241297458730897479,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241297515014389821,
+            "name": "montrose",
+            "type": "text"
+        },
+        {
+            "id": 1241297470600773643,
+            "name": "chaffee",
+            "type": "text"
+        },
+        {
+            "id": 1241297514494296164,
+            "name": "montezuma",
+            "type": "text"
+        },
+        {
+            "id": 1241297520672637002,
+            "name": "pitkin",
+            "type": "text"
+        },
+        {
+            "id": 1241297491413176351,
+            "name": "grand",
+            "type": "text"
+        },
+        {
+            "id": 1241297530202099772,
+            "name": "summit",
+            "type": "text"
+        },
+        {
+            "id": 1241297475470360697,
+            "name": "crowley",
+            "type": "text"
+        },
+        {
+            "id": 1241297494105919488,
+            "name": "huerfano",
+            "type": "text"
+        },
+        {
+            "id": 1241297465559224342,
+            "name": "arapahoe",
+            "type": "text"
+        },
+        {
+            "id": 1241297526162718820,
+            "name": "saguache",
+            "type": "text"
+        },
+        {
+            "id": 1241297511315148841,
+            "name": "mesa",
+            "type": "text"
+        },
+        {
+            "id": 1241297528096559105,
+            "name": "san-miguel",
+            "type": "text"
+        },
+        {
+            "id": 1241297473335459910,
+            "name": "conejos",
+            "type": "text"
+        },
+        {
+            "id": 1241297523734216704,
+            "name": "rio-blanco",
+            "type": "text"
+        },
+        {
+            "id": 1241297521305849916,
+            "name": "Counties PROWERS - YUMA",
+            "type": "category"
+        },
+        {
+            "id": 1241297477664112640,
+            "name": "denver",
+            "type": "text"
+        },
+        {
+            "id": 1241297476946890802,
+            "name": "delta",
+            "type": "text"
+        },
+        {
+            "id": 1241297529295994890,
+            "name": "sedgwick",
+            "type": "text"
+        },
+        {
+            "id": 1241297513382678538,
+            "name": "moffat",
+            "type": "text"
+        },
+        {
+            "id": 1241297463214735370,
+            "name": "adams",
+            "type": "text"
+        },
+        {
+            "id": 1241297534442537030,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241297462497382400,
+            "name": "Counties ADAMS - PITKIN",
+            "type": "category"
+        },
+        {
+            "id": 1241297527186128988,
+            "name": "san-juan",
+            "type": "text"
+        },
+        {
+            "id": 1241297461817901076,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241297458135302144,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241297474392686593,
+            "name": "costilla",
+            "type": "text"
+        },
+        {
+            "id": 1241297535029743657,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241297533901471744,
+            "name": "yuma",
+            "type": "text"
+        },
+        {
+            "id": 1241297479031455818,
+            "name": "douglas",
+            "type": "text"
+        },
+        {
+            "id": 1241297466746212403,
+            "name": "archuleta",
+            "type": "text"
+        },
+        {
+            "id": 1241297476040785931,
+            "name": "custer",
+            "type": "text"
+        },
+        {
+            "id": 1241297457288187944,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241297478377148436,
+            "name": "dolores",
+            "type": "text"
+        },
+        {
+            "id": 1241297508840378448,
+            "name": "las-animas",
+            "type": "text"
+        },
+        {
+            "id": 1241297519175274548,
+            "name": "park",
+            "type": "text"
+        },
+        {
+            "id": 1241297471754469528,
+            "name": "cheyenne",
+            "type": "text"
+        },
+        {
+            "id": 1241297517287833680,
+            "name": "otero",
+            "type": "text"
+        },
+        {
+            "id": 1241297487696760862,
+            "name": "fremont",
+            "type": "text"
+        },
+        {
+            "id": 1241297467945914442,
+            "name": "bent",
+            "type": "text"
+        },
+        {
+            "id": 1241297502263578636,
+            "name": "lake",
+            "type": "text"
+        },
+        {
+            "id": 1241297497159368815,
+            "name": "kiowa",
+            "type": "text"
+        },
+        {
+            "id": 1241297518399193098,
+            "name": "ouray",
+            "type": "text"
+        },
+        {
+            "id": 1241297522870190100,
+            "name": "pueblo",
+            "type": "text"
+        },
+        {
+            "id": 1241297481241989223,
+            "name": "el-paso",
+            "type": "text"
+        },
+        {
+            "id": 1241297461016920165,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241297470051454996,
+            "name": "broomfield",
+            "type": "text"
+        },
+        {
+            "id": 1241297532206714941,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241297519787507773,
+            "name": "phillips",
+            "type": "text"
+        },
+        {
+            "id": 1241297522035789916,
+            "name": "prowers",
+            "type": "text"
+        },
+        {
+            "id": 1241297532689190944,
+            "name": "weld",
+            "type": "text"
+        },
+        {
+            "id": 1241297464556916816,
+            "name": "alamosa",
+            "type": "text"
+        },
+        {
+            "id": 1241297516067033120,
+            "name": "morgan",
+            "type": "text"
+        },
+        {
+            "id": 1241297524522876969,
+            "name": "rio-grande",
+            "type": "text"
+        },
+        {
+            "id": 1241297479996014736,
+            "name": "eagle",
+            "type": "text"
+        },
+        {
+            "id": 1241297455782559775,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241297495380987905,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241297489789718548,
+            "name": "gilpin",
+            "type": "text"
+        },
+        {
+            "id": 1241297503463280701,
+            "name": "larimer",
+            "type": "text"
+        },
+        {
+            "id": 1241297493367455804,
+            "name": "hinsdale",
+            "type": "text"
+        },
+        {
+            "id": 1241297467463700511,
+            "name": "baca",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241297165389664256,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241297454763081844,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241297454331068426,
+            "name": "Member"
+        },
+        {
+            "id": 1241297453676761100,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241297453295079434,
+            "name": "Admin"
+        },
+        {
+            "id": 1241297408738988046,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241297335988785238,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241297187871133706,
+            "name": "Admin"
+        }
+    ]
+}

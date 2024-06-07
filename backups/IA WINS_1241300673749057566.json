@@ -1,0 +1,607 @@
+{
+    "name": "IA WINS",
+    "id": 1241300673749057566,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T08:07:03.753000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241301144903487588,
+            "name": "black-hawk",
+            "type": "text"
+        },
+        {
+            "id": 1241301228126736394,
+            "name": "scott",
+            "type": "text"
+        },
+        {
+            "id": 1241301142542090282,
+            "name": "appanoose",
+            "type": "text"
+        },
+        {
+            "id": 1241301245189165188,
+            "name": "worth",
+            "type": "text"
+        },
+        {
+            "id": 1241301201363144764,
+            "name": "mills",
+            "type": "text"
+        },
+        {
+            "id": 1241301249110970508,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241301219394326619,
+            "name": "polk",
+            "type": "text"
+        },
+        {
+            "id": 1241301167104065549,
+            "name": "delaware",
+            "type": "text"
+        },
+        {
+            "id": 1241301161508605952,
+            "name": "clinton",
+            "type": "text"
+        },
+        {
+            "id": 1241301242467188839,
+            "name": "winnebago",
+            "type": "text"
+        },
+        {
+            "id": 1241301188884955166,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1241301231050162267,
+            "name": "story",
+            "type": "text"
+        },
+        {
+            "id": 1241301208392794133,
+            "name": "page",
+            "type": "text"
+        },
+        {
+            "id": 1241301240126771303,
+            "name": "webster",
+            "type": "text"
+        },
+        {
+            "id": 1241301236334989332,
+            "name": "wapello",
+            "type": "text"
+        },
+        {
+            "id": 1241301171960811540,
+            "name": "fayette",
+            "type": "text"
+        },
+        {
+            "id": 1241301191699468348,
+            "name": "keokuk",
+            "type": "text"
+        },
+        {
+            "id": 1241301179045253142,
+            "name": "hancock",
+            "type": "text"
+        },
+        {
+            "id": 1241301131582505041,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241301157813686353,
+            "name": "cherokee",
+            "type": "text"
+        },
+        {
+            "id": 1241301148862906378,
+            "name": "buena-vista",
+            "type": "text"
+        },
+        {
+            "id": 1241301207050489866,
+            "name": "obrien",
+            "type": "text"
+        },
+        {
+            "id": 1241301164385894400,
+            "name": "davis",
+            "type": "text"
+        },
+        {
+            "id": 1241301195381801042,
+            "name": "louisa",
+            "type": "text"
+        },
+        {
+            "id": 1241301203757957128,
+            "name": "monroe",
+            "type": "text"
+        },
+        {
+            "id": 1241301226079916073,
+            "name": "poweshiek",
+            "type": "text"
+        },
+        {
+            "id": 1241301239078326322,
+            "name": "wayne",
+            "type": "text"
+        },
+        {
+            "id": 1241301158598017126,
+            "name": "chickasaw",
+            "type": "text"
+        },
+        {
+            "id": 1241301132983406673,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241301160091189248,
+            "name": "clay",
+            "type": "text"
+        },
+        {
+            "id": 1241301154042871835,
+            "name": "cass",
+            "type": "text"
+        },
+        {
+            "id": 1241301168374939648,
+            "name": "des-moines",
+            "type": "text"
+        },
+        {
+            "id": 1241301243624816681,
+            "name": "winneshiek",
+            "type": "text"
+        },
+        {
+            "id": 1241301186792128552,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241301180601335880,
+            "name": "harrison",
+            "type": "text"
+        },
+        {
+            "id": 1241301162326495348,
+            "name": "crawford",
+            "type": "text"
+        },
+        {
+            "id": 1241301193636970527,
+            "name": "lee",
+            "type": "text"
+        },
+        {
+            "id": 1241301247525650512,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241301172858388590,
+            "name": "floyd",
+            "type": "text"
+        },
+        {
+            "id": 1241301230433865738,
+            "name": "sioux",
+            "type": "text"
+        },
+        {
+            "id": 1241301197902581831,
+            "name": "madison",
+            "type": "text"
+        },
+        {
+            "id": 1241301235357716604,
+            "name": "van-buren",
+            "type": "text"
+        },
+        {
+            "id": 1241301227455774772,
+            "name": "sac",
+            "type": "text"
+        },
+        {
+            "id": 1241301232681746454,
+            "name": "taylor",
+            "type": "text"
+        },
+        {
+            "id": 1241301159248007230,
+            "name": "clarke",
+            "type": "text"
+        },
+        {
+            "id": 1241301178034290761,
+            "name": "hamilton",
+            "type": "text"
+        },
+        {
+            "id": 1241301138679009361,
+            "name": "Counties ADAIR - JASPER",
+            "type": "category"
+        },
+        {
+            "id": 1241301207809658941,
+            "name": "osceola",
+            "type": "text"
+        },
+        {
+            "id": 1241301133985583106,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241301244254093385,
+            "name": "woodbury",
+            "type": "text"
+        },
+        {
+            "id": 1241301135642460190,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241301198888370186,
+            "name": "mahaska",
+            "type": "text"
+        },
+        {
+            "id": 1241301171130339338,
+            "name": "emmet",
+            "type": "text"
+        },
+        {
+            "id": 1241301192504512512,
+            "name": "kossuth",
+            "type": "text"
+        },
+        {
+            "id": 1241301165786796073,
+            "name": "decatur",
+            "type": "text"
+        },
+        {
+            "id": 1241301190873055353,
+            "name": "jones",
+            "type": "text"
+        },
+        {
+            "id": 1241301175668838400,
+            "name": "greene",
+            "type": "text"
+        },
+        {
+            "id": 1241301163605757972,
+            "name": "dallas",
+            "type": "text"
+        },
+        {
+            "id": 1241301179800227901,
+            "name": "hardin",
+            "type": "text"
+        },
+        {
+            "id": 1241301197059522600,
+            "name": "lyon",
+            "type": "text"
+        },
+        {
+            "id": 1241301155372597289,
+            "name": "cedar",
+            "type": "text"
+        },
+        {
+            "id": 1241301132110729257,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241301174863401020,
+            "name": "fremont",
+            "type": "text"
+        },
+        {
+            "id": 1241301145809453129,
+            "name": "boone",
+            "type": "text"
+        },
+        {
+            "id": 1241301181364703283,
+            "name": "henry",
+            "type": "text"
+        },
+        {
+            "id": 1241301189786730516,
+            "name": "johnson",
+            "type": "text"
+        },
+        {
+            "id": 1241301211236405380,
+            "name": "pocahontas",
+            "type": "text"
+        },
+        {
+            "id": 1241301181725147167,
+            "name": "howard",
+            "type": "text"
+        },
+        {
+            "id": 1241301140952580216,
+            "name": "adams",
+            "type": "text"
+        },
+        {
+            "id": 1241301200637399140,
+            "name": "marshall",
+            "type": "text"
+        },
+        {
+            "id": 1241301246577606656,
+            "name": "wright",
+            "type": "text"
+        },
+        {
+            "id": 1241301147864797204,
+            "name": "buchanan",
+            "type": "text"
+        },
+        {
+            "id": 1241301170245468301,
+            "name": "dubuque",
+            "type": "text"
+        },
+        {
+            "id": 1241301141816348793,
+            "name": "allamakee",
+            "type": "text"
+        },
+        {
+            "id": 1241301143326294056,
+            "name": "audubon",
+            "type": "text"
+        },
+        {
+            "id": 1241301133180272691,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241301194434023484,
+            "name": "linn",
+            "type": "text"
+        },
+        {
+            "id": 1241301237467713536,
+            "name": "warren",
+            "type": "text"
+        },
+        {
+            "id": 1241301157054513173,
+            "name": "cerro-gordo",
+            "type": "text"
+        },
+        {
+            "id": 1241301204768919594,
+            "name": "montgomery",
+            "type": "text"
+        },
+        {
+            "id": 1241301176775868447,
+            "name": "grundy",
+            "type": "text"
+        },
+        {
+            "id": 1241301138003857408,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241301136342777877,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241301209759879198,
+            "name": "palo-alto",
+            "type": "text"
+        },
+        {
+            "id": 1241301173743648780,
+            "name": "franklin",
+            "type": "text"
+        },
+        {
+            "id": 1241301184132812893,
+            "name": "ida",
+            "type": "text"
+        },
+        {
+            "id": 1241301202717638677,
+            "name": "monona",
+            "type": "text"
+        },
+        {
+            "id": 1241301152910544916,
+            "name": "carroll",
+            "type": "text"
+        },
+        {
+            "id": 1241301226772107274,
+            "name": "ringgold",
+            "type": "text"
+        },
+        {
+            "id": 1241301183054872596,
+            "name": "humboldt",
+            "type": "text"
+        },
+        {
+            "id": 1241301188096430152,
+            "name": "Counties JEFFERSON - WRIGHT",
+            "type": "category"
+        },
+        {
+            "id": 1241301238222684191,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241301196262871090,
+            "name": "lucas",
+            "type": "text"
+        },
+        {
+            "id": 1241301187425472574,
+            "name": "jasper",
+            "type": "text"
+        },
+        {
+            "id": 1241301177782632469,
+            "name": "guthrie",
+            "type": "text"
+        },
+        {
+            "id": 1241301232157593600,
+            "name": "tama",
+            "type": "text"
+        },
+        {
+            "id": 1241301160795574304,
+            "name": "clayton",
+            "type": "text"
+        },
+        {
+            "id": 1241301225132130374,
+            "name": "pottawattamie",
+            "type": "text"
+        },
+        {
+            "id": 1241301210246545490,
+            "name": "plymouth",
+            "type": "text"
+        },
+        {
+            "id": 1241301199735754782,
+            "name": "marion",
+            "type": "text"
+        },
+        {
+            "id": 1241301205746061353,
+            "name": "muscatine",
+            "type": "text"
+        },
+        {
+            "id": 1241301186058129428,
+            "name": "iowa",
+            "type": "text"
+        },
+        {
+            "id": 1241301201954279485,
+            "name": "mitchell",
+            "type": "text"
+        },
+        {
+            "id": 1241301152084267038,
+            "name": "calhoun",
+            "type": "text"
+        },
+        {
+            "id": 1241301147176665098,
+            "name": "bremer",
+            "type": "text"
+        },
+        {
+            "id": 1241301151312379924,
+            "name": "butler",
+            "type": "text"
+        },
+        {
+            "id": 1241301228843958273,
+            "name": "shelby",
+            "type": "text"
+        },
+        {
+            "id": 1241301143573762089,
+            "name": "benton",
+            "type": "text"
+        },
+        {
+            "id": 1241301169452617779,
+            "name": "dickinson",
+            "type": "text"
+        },
+        {
+            "id": 1241301140029706310,
+            "name": "adair",
+            "type": "text"
+        },
+        {
+            "id": 1241301234095489114,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1241301248351797248,
+            "name": "chat",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241300673749057566,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241301130684923945,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241301129703325717,
+            "name": "Member"
+        },
+        {
+            "id": 1241301129187430441,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241301128541372506,
+            "name": "Admin"
+        },
+        {
+            "id": 1241301081049268247,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241301012510150740,
+            "name": "TheDude"
+        },
+        {
+            "id": 1241300698231210076,
+            "name": "Admin"
+        }
+    ]
+}

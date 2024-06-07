@@ -1,0 +1,447 @@
+{
+    "name": "FL WINS",
+    "id": 1241270724623335484,
+    "members": [
+        {
+            "id": 1234470698060091442,
+            "name": "TheDude#3643",
+            "joined_at": "2024-05-18T06:07:32.527000+00:00"
+        }
+    ],
+    "channels": [
+        {
+            "id": 1241289860178772040,
+            "name": "Misc",
+            "type": "category"
+        },
+        {
+            "id": 1241289921935835188,
+            "name": "sarasota",
+            "type": "text"
+        },
+        {
+            "id": 1241289929103904861,
+            "name": "wakulla",
+            "type": "text"
+        },
+        {
+            "id": 1241289914620842074,
+            "name": "Counties PASCO - WASHINGTON",
+            "type": "category"
+        },
+        {
+            "id": 1241289877568356402,
+            "name": "columbia",
+            "type": "text"
+        },
+        {
+            "id": 1241289857624571924,
+            "name": "Rules & Verify",
+            "type": "category"
+        },
+        {
+            "id": 1241289881146228807,
+            "name": "escambia",
+            "type": "text"
+        },
+        {
+            "id": 1241289933436489779,
+            "name": "log",
+            "type": "text"
+        },
+        {
+            "id": 1241289906400264255,
+            "name": "miami-dade",
+            "type": "text"
+        },
+        {
+            "id": 1241289887089426442,
+            "name": "gulf",
+            "type": "text"
+        },
+        {
+            "id": 1241289905846616074,
+            "name": "martin",
+            "type": "text"
+        },
+        {
+            "id": 1241289899320021022,
+            "name": "lee",
+            "type": "text"
+        },
+        {
+            "id": 1241289908014944298,
+            "name": "nassau",
+            "type": "text"
+        },
+        {
+            "id": 1241289892525375498,
+            "name": "hillsborough",
+            "type": "text"
+        },
+        {
+            "id": 1241289885281947820,
+            "name": "gilchrist",
+            "type": "text"
+        },
+        {
+            "id": 1241289916655075368,
+            "name": "pinellas",
+            "type": "text"
+        },
+        {
+            "id": 1241289873038639104,
+            "name": "citrus",
+            "type": "text"
+        },
+        {
+            "id": 1241289931817615483,
+            "name": "Admin & Mod",
+            "type": "category"
+        },
+        {
+            "id": 1241289898191753216,
+            "name": "lake",
+            "type": "text"
+        },
+        {
+            "id": 1241289922883883078,
+            "name": "seminole",
+            "type": "text"
+        },
+        {
+            "id": 1241289866440871956,
+            "name": "baker",
+            "type": "text"
+        },
+        {
+            "id": 1241289911135375360,
+            "name": "orange",
+            "type": "text"
+        },
+        {
+            "id": 1241289932811534376,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241289930114596914,
+            "name": "walton",
+            "type": "text"
+        },
+        {
+            "id": 1241289861575475292,
+            "name": "check-your-counts",
+            "type": "text"
+        },
+        {
+            "id": 1241289891296317512,
+            "name": "highlands",
+            "type": "text"
+        },
+        {
+            "id": 1241289865664921620,
+            "name": "alachua",
+            "type": "text"
+        },
+        {
+            "id": 1241289895700467743,
+            "name": "jefferson",
+            "type": "text"
+        },
+        {
+            "id": 1241289888100253727,
+            "name": "hardee",
+            "type": "text"
+        },
+        {
+            "id": 1241289925559713913,
+            "name": "taylor",
+            "type": "text"
+        },
+        {
+            "id": 1241289896426213456,
+            "name": "lafayette",
+            "type": "text"
+        },
+        {
+            "id": 1241289915342520351,
+            "name": "pasco",
+            "type": "text"
+        },
+        {
+            "id": 1241289869356044298,
+            "name": "brevard",
+            "type": "text"
+        },
+        {
+            "id": 1241289870819856414,
+            "name": "broward",
+            "type": "text"
+        },
+        {
+            "id": 1241289899986911242,
+            "name": "leon",
+            "type": "text"
+        },
+        {
+            "id": 1241289871667105842,
+            "name": "calhoun",
+            "type": "text"
+        },
+        {
+            "id": 1241289923106045996,
+            "name": "sumter",
+            "type": "text"
+        },
+        {
+            "id": 1241289900662456320,
+            "name": "levy",
+            "type": "text"
+        },
+        {
+            "id": 1241289880193994822,
+            "name": "duval",
+            "type": "text"
+        },
+        {
+            "id": 1241289908950274049,
+            "name": "okaloosa",
+            "type": "text"
+        },
+        {
+            "id": 1241289903942139924,
+            "name": "manatee",
+            "type": "text"
+        },
+        {
+            "id": 1241289884153548820,
+            "name": "gadsden",
+            "type": "text"
+        },
+        {
+            "id": 1241289895025049671,
+            "name": "jackson",
+            "type": "text"
+        },
+        {
+            "id": 1241289920727748670,
+            "name": "santa-rosa",
+            "type": "text"
+        },
+        {
+            "id": 1241289867460083794,
+            "name": "bay",
+            "type": "text"
+        },
+        {
+            "id": 1241289919192633404,
+            "name": "saint-johns",
+            "type": "text"
+        },
+        {
+            "id": 1241289894421200936,
+            "name": "indian-river",
+            "type": "text"
+        },
+        {
+            "id": 1241289872258498641,
+            "name": "charlotte",
+            "type": "text"
+        },
+        {
+            "id": 1241289910196113488,
+            "name": "okeechobee",
+            "type": "text"
+        },
+        {
+            "id": 1241289890704920617,
+            "name": "hernando",
+            "type": "text"
+        },
+        {
+            "id": 1241289878273003520,
+            "name": "de-soto",
+            "type": "text"
+        },
+        {
+            "id": 1241289924079255643,
+            "name": "suwannee",
+            "type": "text"
+        },
+        {
+            "id": 1241289926725730414,
+            "name": "union",
+            "type": "text"
+        },
+        {
+            "id": 1241289864197050428,
+            "name": "memes",
+            "type": "text"
+        },
+        {
+            "id": 1241289901513768961,
+            "name": "liberty",
+            "type": "text"
+        },
+        {
+            "id": 1241289919758864405,
+            "name": "saint-lucie",
+            "type": "text"
+        },
+        {
+            "id": 1241289864402440193,
+            "name": "Counties ALACHUA - PALM BEACH",
+            "type": "category"
+        },
+        {
+            "id": 1241289889165873192,
+            "name": "hendry",
+            "type": "text"
+        },
+        {
+            "id": 1241289907515818014,
+            "name": "monroe",
+            "type": "text"
+        },
+        {
+            "id": 1241289881695682711,
+            "name": "flagler",
+            "type": "text"
+        },
+        {
+            "id": 1241289893120835636,
+            "name": "holmes",
+            "type": "text"
+        },
+        {
+            "id": 1241289876016467978,
+            "name": "collier",
+            "type": "text"
+        },
+        {
+            "id": 1241289913811468340,
+            "name": "palm-beach",
+            "type": "text"
+        },
+        {
+            "id": 1241289930844667974,
+            "name": "washington",
+            "type": "text"
+        },
+        {
+            "id": 1241289887328768113,
+            "name": "hamilton",
+            "type": "text"
+        },
+        {
+            "id": 1241289868496212078,
+            "name": "bradford",
+            "type": "text"
+        },
+        {
+            "id": 1241289858727809044,
+            "name": "rules",
+            "type": "text"
+        },
+        {
+            "id": 1241289859524460565,
+            "name": "verification",
+            "type": "text"
+        },
+        {
+            "id": 1241289879023910983,
+            "name": "dixie",
+            "type": "text"
+        },
+        {
+            "id": 1241289928206450728,
+            "name": "volusia",
+            "type": "text"
+        },
+        {
+            "id": 1241289902830653483,
+            "name": "madison",
+            "type": "text"
+        },
+        {
+            "id": 1241289918353768459,
+            "name": "putnam",
+            "type": "text"
+        },
+        {
+            "id": 1241289862536105995,
+            "name": "only-fans-directory",
+            "type": "text"
+        },
+        {
+            "id": 1241289917665906720,
+            "name": "polk",
+            "type": "text"
+        },
+        {
+            "id": 1241289874565496842,
+            "name": "clay",
+            "type": "text"
+        },
+        {
+            "id": 1241289883478392852,
+            "name": "franklin",
+            "type": "text"
+        },
+        {
+            "id": 1241289905062154292,
+            "name": "marion",
+            "type": "text"
+        },
+        {
+            "id": 1241289860849995786,
+            "name": "chat",
+            "type": "text"
+        },
+        {
+            "id": 1241289886447702076,
+            "name": "glades",
+            "type": "text"
+        },
+        {
+            "id": 1241289912888590366,
+            "name": "osceola",
+            "type": "text"
+        }
+    ],
+    "roles": [
+        {
+            "id": 1241270724623335484,
+            "name": "@everyone"
+        },
+        {
+            "id": 1241289856978780170,
+            "name": "MUST VERIFY"
+        },
+        {
+            "id": 1241289856248971315,
+            "name": "Member"
+        },
+        {
+            "id": 1241289855422566533,
+            "name": "Moderator"
+        },
+        {
+            "id": 1241289854726307911,
+            "name": "Admin"
+        },
+        {
+            "id": 1241289549116866654,
+            "name": "Archive Bot"
+        },
+        {
+            "id": 1241270959768342622,
+            "name": "Bot"
+        },
+        {
+            "id": 1241270934292140045,
+            "name": "TheDude"
+        }
+    ]
+}
