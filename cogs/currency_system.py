@@ -1,22 +1,28 @@
 import logging
 from datetime import datetime, timedelta
+import os
 
 import discord
 from discord import app_commands
 from discord.ext import commands
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.future import select
+from dotenv import load_dotenv
+from sqlalchemy.orm import sessionmaker
 
 from db.database import UserCurrency, Transaction, Base
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Database setup
-DATABASE_URL = "sqlite+aiosqlite:///./test.db"  # Update with your actual database URL
-engine = create_async_engine(DATABASE_URL, echo=True)
-AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db') # Update with your actual database URL
+engine = create_async_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
 
 def has_any_role(member: discord.Member, *role_names: str) -> bool:
     return any(role.name in role_names for role in member.roles)
