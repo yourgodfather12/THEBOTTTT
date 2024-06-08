@@ -90,7 +90,7 @@ class UtilityCog(commands.Cog):
         try:
             embed = discord.Embed(title="Bot Commands", color=discord.Color.blue())
             for cog_name, cog in self.bot.cogs.items():
-                command_names = [command.name for command in cog.walk_app_commands()]
+                command_names = [command.name for command in cog.get_app_commands()]
                 if command_names:
                     embed.add_field(
                         name=cog_name,
@@ -98,7 +98,7 @@ class UtilityCog(commands.Cog):
                         inline=False
                     )
             # List commands not associated with any cog
-            no_cog_commands = [command.name for command in self.bot.walk_app_commands() if command.cog_name is None]
+            no_cog_commands = [command.name for command in self.bot.tree.walk_commands() if command.parent is None]
             if no_cog_commands:
                 embed.add_field(
                     name="No Category",
