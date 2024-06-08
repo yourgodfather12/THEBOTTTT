@@ -7,8 +7,9 @@ from discord import app_commands
 from discord.ext import commands
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.future import select
-from dotenv import load_dotenv
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import pytz
 
 from db.database import UserCurrency, Transaction, Base
 
@@ -20,9 +21,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Database setup
-DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db') # Update with your actual database URL
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db')
 engine = create_async_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
+# Timezone setup
+eastern = pytz.timezone('US/Eastern')
 
 def has_any_role(member: discord.Member, *role_names: str) -> bool:
     return any(role.name in role_names for role in member.roles)
@@ -35,7 +38,7 @@ class CurrencySystem(commands.Cog):
 
     async def get_balance(self, user_id: int) -> int:
         try:
-            async with AsyncSessionLocal() as db:
+            async with SessionLocal() as db:
                 result = await db.execute(
                     select(UserCurrency).filter_by(user_id=user_id)
                 )
@@ -47,7 +50,7 @@ class CurrencySystem(commands.Cog):
 
     async def update_balance(self, user_id: int, amount: int, description: str = None) -> None:
         try:
-            async with AsyncSessionLocal() as db:
+            async with SessionLocal() as db:
                 result = await db.execute(
                     select(UserCurrency).filter_by(user_id=user_id)
                 )
@@ -64,7 +67,7 @@ class CurrencySystem(commands.Cog):
 
     async def get_transaction_history(self, user_id: int, limit: int = 10):
         try:
-            async with AsyncSessionLocal() as db:
+            async with SessionLocal() as db:
                 result = await db.execute(
                     select(Transaction).filter_by(user_id=user_id).order_by(Transaction.timestamp.desc()).limit(limit)
                 )
@@ -124,13 +127,14 @@ class CurrencySystem(commands.Cog):
 
         history_message = "Your last transactions:\n"
         for transaction in transactions:
-            history_message += f"{transaction.timestamp.strftime('%Y-%m-%d %H:%M:%S')} - {transaction.amount} KyBucks - {transaction.description}\n"
+            timestamp_est = transaction.timestamp.astimezone(eastern)
+            history_message += f"{timestamp_est.strftime('%Y-%m-%d %H:%M:%S')} - {transaction.amount} KyBucks - {transaction.description}\n"
         await self.send_embed_message(interaction, "Transaction History", history_message)
 
     @app_commands.command(name="leaderboard", description="View the top users with the most KyBucks")
     async def leaderboard(self, interaction: discord.Interaction):
         try:
-            async with AsyncSessionLocal() as db:
+            async with SessionLocal() as db:
                 result = await db.execute(
                     select(UserCurrency).order_by(UserCurrency.balance.desc()).limit(10)
                 )
@@ -148,7 +152,7 @@ class CurrencySystem(commands.Cog):
     async def daily(self, interaction: discord.Interaction):
         user_id = interaction.user.id
         try:
-            async with AsyncSessionLocal() as db:
+            async with SessionLocal() as db:
                 last_claim = await db.execute(
                     select(Transaction).filter_by(user_id=user_id, description='Daily Reward').order_by(Transaction.timestamp.desc()).limit(1)
                 )

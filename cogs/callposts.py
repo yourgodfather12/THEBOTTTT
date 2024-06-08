@@ -8,7 +8,7 @@ from discord.ext import commands, tasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from db.database import AsyncSessionLocal, MessageCount
+from db.database import AsyncSessionLocal, MessageCount, Attachment
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)

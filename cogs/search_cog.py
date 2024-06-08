@@ -18,7 +18,7 @@ KENTUCKY_BLUE = discord.Color.from_rgb(0, 84, 164)
 class SearchCog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.search_cooldown = commands.CooldownMapping.from_cooldown(5, SEARCH_COOLDOWN, app_commands.BucketType.user)
+        self.search_cooldown = commands.CooldownMapping.from_cooldown(5, SEARCH_COOLDOWN, commands.BucketType.user)
 
     async def cog_check(self, interaction: discord.Interaction) -> bool:
         allowed_roles = {'Admin', 'Mod', 'VIP', 'Member'}
@@ -98,4 +98,3 @@ class SearchCog(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(SearchCog(bot))
-

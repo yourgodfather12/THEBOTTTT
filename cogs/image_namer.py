@@ -11,27 +11,23 @@ logger = logging.getLogger(__name__)
 class ImageNamer(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.image_folder = 'path/to/your/image/folder'  # Update with your actual folder path
+        self.image_folder = r'C:\Users\joshu\PycharmProjects\THEBOTTTT\database\need_names'  # Update with your actual folder path
         self.image_formats = ('.jpg', '.jpeg', '.png', '.gif', '.heic', '.heif')
-        self.load_images()
         self.current_images = {}  # Dictionary to track posted images and their message IDs
+        self.load_images()
 
     def load_images(self):
         if not os.path.exists(self.image_folder):
             logger.error(f"Image folder '{self.image_folder}' does not exist.")
             self.image_files = []
         else:
-            self.image_files = [f for f in os.listdir(self.image_folder) if os.path.isfile(os.path.join(self.image_folder, f)) and f.lower().endswith(self.image_formats)]
-
-    async def cog_load(self):
-        self.bot.tree.add_command(self.images)
+            self.image_files = [f for f in os.listdir(self.image_folder)
+                                if os.path.isfile(os.path.join(self.image_folder, f)) and f.lower().endswith(self.image_formats)]
 
     def validate_filename(self, name):
         return ''.join(c for c in name if c.isalnum() or c in (' ', '_')).rstrip()
 
-    images = app_commands.Group(name='images', description='Manage images')
-
-    @images.command(name='post_all', description='Post all images that need names.')
+    @app_commands.command(name='post_all_images', description='Post all images that need names.')
     async def post_all_images(self, interaction: discord.Interaction):
         if not self.image_files:
             await interaction.response.send_message("No more images to post!", ephemeral=True)
@@ -49,7 +45,7 @@ class ImageNamer(commands.Cog):
 
         await interaction.response.send_message("All images have been posted.", ephemeral=True)
 
-    @images.command(name='name', description='Name an image by message ID.')
+    @app_commands.command(name='name_image', description='Name an image by message ID.')
     @app_commands.describe(message_id='The message ID of the image to be named', name='The new name for the image')
     async def name_image(self, interaction: discord.Interaction, message_id: int, name: str):
         name = self.validate_filename(name)
@@ -77,14 +73,14 @@ class ImageNamer(commands.Cog):
         else:
             await interaction.response.send_message("Invalid message ID or the image has already been named.", ephemeral=True)
 
-    @images.command(name='list', description='List all available images.')
+    @app_commands.command(name='list_images', description='List all available images.')
     async def list_images(self, interaction: discord.Interaction):
         if not self.image_files:
             await interaction.response.send_message("No images available.", ephemeral=True)
         else:
             await interaction.response.send_message("Available images:\n" + "\n".join(self.image_files), ephemeral=True)
 
-    @images.command(name='remaining', description='List all remaining images to be named.')
+    @app_commands.command(name='remaining_images', description='List all remaining images to be named.')
     async def remaining_images(self, interaction: discord.Interaction):
         remaining = [img for img in self.image_files if img not in self.current_images.values()]
         if not remaining:
@@ -92,7 +88,7 @@ class ImageNamer(commands.Cog):
         else:
             await interaction.response.send_message("Remaining images:\n" + "\n".join(remaining), ephemeral=True)
 
-    @images.command(name='delete', description='Delete an image by its name.')
+    @app_commands.command(name='delete_image', description='Delete an image by its name.')
     @app_commands.describe(name='The name of the image to delete')
     async def delete_image(self, interaction: discord.Interaction, name: str):
         name = self.validate_filename(name)
@@ -109,7 +105,7 @@ class ImageNamer(commands.Cog):
         else:
             await interaction.response.send_message("Image not found.", ephemeral=True)
 
-    @images.command(name='describe', description='Add a description to an image.')
+    @app_commands.command(name='describe_image', description='Add a description to an image.')
     @app_commands.describe(name='The name of the image', description='The description to add')
     async def describe_image(self, interaction: discord.Interaction, name: str, description: str):
         name = self.validate_filename(name)
