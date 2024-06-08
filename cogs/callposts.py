@@ -159,4 +159,3 @@ class CallPosts(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(CallPosts(bot))
-    # Removed duplicate cog registration and command registration

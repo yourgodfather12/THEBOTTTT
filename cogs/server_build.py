@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import aiohttp
 import discord
@@ -230,4 +230,3 @@ class ServerBuilder(commands.Cog):
 async def setup(bot: commands.Bot) -> None:
     cog = ServerBuilder(bot)
     await bot.add_cog(cog)
-    # Removed duplicate command registration

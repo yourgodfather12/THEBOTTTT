@@ -106,7 +106,6 @@ class TradingCog(commands.Cog):
         os.makedirs(self.trades_dir, exist_ok=True)
 
     @app_commands.command(name="trade", description="Initiate a trade")
-    @app_commands.describe()
     @app_commands.default_permissions(manage_messages=True)
     async def trade(self, interaction: discord.Interaction):
         user = interaction.user
@@ -272,4 +271,3 @@ class TradingCog(commands.Cog):
 async def setup(bot: commands.Bot):
     cog = TradingCog(bot)
     await bot.add_cog(cog)
-    # Removed duplicate command registration

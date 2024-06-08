@@ -1,20 +1,29 @@
 import os
 import asyncio
 import logging
-from sqlalchemy import Column, Integer, String, BigInteger, DateTime, ForeignKey, Index
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+import pytz
+from sqlalchemy import event, Column, Integer, String, BigInteger, DateTime, ForeignKey, Index
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy.future import select
+from sqlalchemy.exc import DisconnectionError, OperationalError
+from datetime import datetime
 
-# Configure logging
+# Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Environment variable for the database URL
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///kywins.db")
+# Database URL
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db')
 
 Base = declarative_base()
+
+# Define the timezone for Eastern Standard Time
+eastern = pytz.timezone('US/Eastern')
+
+def current_time_est():
+    """Get the current time in EST."""
+    return datetime.now(eastern)
 
 class Guild(Base):
     __tablename__ = 'guilds'
@@ -35,6 +44,7 @@ class Attachment(Base):
     post_dir_name = Column(String, nullable=False)
     filename = Column(String, nullable=False)
     file_path = Column(String, nullable=False)
+    timestamp = Column(DateTime, default=current_time_est, nullable=False)
     __table_args__ = (
         Index('idx_attachments_username_channel', 'username', 'channel_name'),
     )
@@ -56,7 +66,7 @@ class RecentPurchase(Base):
     username = Column(String, nullable=False)
     county_name = Column(String, ForeignKey('counties.name'), nullable=False)
     price = Column(Integer, nullable=False)
-    timestamp = Column(DateTime, nullable=False)
+    timestamp = Column(DateTime, nullable=False, default=current_time_est)
 
 class Trade(Base):
     __tablename__ = 'trades'
@@ -65,7 +75,7 @@ class Trade(Base):
     user2 = Column(String, nullable=False)
     item1 = Column(String, nullable=False)
     item2 = Column(String, nullable=False)
-    timestamp = Column(DateTime, nullable=False)
+    timestamp = Column(DateTime, nullable=False, default=current_time_est)
     feedback1 = Column(String)
     feedback2 = Column(String)
     rating1 = Column(Integer)
@@ -77,7 +87,7 @@ class Transaction(Base):
     user_id = Column(BigInteger, ForeignKey('user_currency.user_id'), nullable=False)
     username = Column(String, nullable=False)
     amount = Column(Integer, nullable=False)
-    timestamp = Column(DateTime, nullable=False)
+    timestamp = Column(DateTime, nullable=False, default=current_time_est)
     description = Column(String)
 
 class MessageCount(Base):
@@ -87,8 +97,14 @@ class MessageCount(Base):
     username = Column(String, nullable=False)
     count = Column(Integer, nullable=False)
 
-# Create the async engine and session maker
-async_engine = create_async_engine(DATABASE_URL, echo=True)
+# Create the async engine with pool_pre_ping enabled
+async_engine = create_async_engine(
+    DATABASE_URL,
+    echo=True,
+    pool_pre_ping=True  # Enables checking connections before use
+)
+
+# Create a session maker
 AsyncSessionLocal = sessionmaker(
     bind=async_engine,
     class_=AsyncSession,
@@ -97,6 +113,28 @@ AsyncSessionLocal = sessionmaker(
     autoflush=False,
 )
 
+# Handle database disconnection events
+def handle_disconnect(dbapi_connection, connection_record):
+    logger.warning("Handling disconnect event.")
+    raise DisconnectionError("Database connection was lost.")
+
+# Add the event listener to handle disconnects
+event.listen(async_engine.sync_engine, "engine_connect", handle_disconnect)
+
+# Another way is to handle invalidated connections
+@event.listens_for(async_engine.sync_engine, "connect")
+def connect(dbapi_connection, connection_record):
+    logger.info("New connection established.")
+    cursor = dbapi_connection.cursor()
+    try:
+        cursor.execute("SELECT 1")
+    except OperationalError as e:
+        logger.error(f"OperationalError during connect: {e}")
+        raise DisconnectionError()
+    finally:
+        cursor.close()
+
+# Initialize the database
 async def init_db():
     async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -115,8 +153,6 @@ async def handle_database_operations():
             except Exception as e:
                 await session.rollback()
                 logger.error(f"An error occurred during database operations: {e}")
-            finally:
-                await session.close()
 
 # Run the database initialization and operations
 async def main():
@@ -124,4 +160,7 @@ async def main():
     await handle_database_operations()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        logger.critical(f"Critical error in script execution: {e}", exc_info=True)

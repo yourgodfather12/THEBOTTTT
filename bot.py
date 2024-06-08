@@ -1,5 +1,7 @@
-import os
 import asyncio
+import logging
+import os
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -7,81 +9,98 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Retrieve the Discord token from environment variables
-DISCORD_TOKEN = os.getenv( "DISCORD_TOKEN" )
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[
+        logging.FileHandler("bot.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Retrieve necessary environment variables
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+GUILD_ID = os.getenv("GUILD_ID")
 
 if not DISCORD_TOKEN:
-    raise ValueError( "No Discord token found in environment variables." )
+    raise ValueError("No Discord token found in environment variables.")
+if not GUILD_ID:
+    raise ValueError("No Guild ID found in environment variables.")
 
-# Initialize the bot with intents and command prefix
-intents = discord.Intents.default()
-intents.messages = True  # Enable message intent to listen for messages
+# Initialize the bot with a command prefix and intents
+intents = discord.Intents.all()
+intents.members = True  # Enable the members intent
 intents.guilds = True
-intents.message_content = True  # Enable message content intent for processing message contents
 
-bot = commands.Bot( command_prefix="!", intents=intents )
+bot = commands.Bot(command_prefix="/", intents=intents)
 
+# Flag to ensure on_ready tasks are only run once
+bot.synced = False
 
 @bot.event
 async def on_ready():
-    print( f'Logged in as {bot.user}' )
-    guild_id = 123456789012345678  # Replace with your actual guild ID
-    guild = bot.get_guild( guild_id )
-
-    if guild is None:
-        print( f"Bot is not a member of the guild with ID {guild_id}." )
-        return
-
-    try:
-        await bot.tree.sync( guild=discord.Object( id=guild_id ) )  # Synchronize slash commands with the specific guild
-        print( f'Slash commands synced with guild: {guild_id}' )
-    except discord.Forbidden:
-        print( f"Error: Missing access to guild {guild_id}" )
-    except discord.HTTPException as e:
-        print( f"HTTP error occurred while syncing commands with guild {guild_id}: {e}" )
-
-
-async def setup_extensions():
-    # Load extensions (cogs)
-    extensions = [
-        'cogs.admin_cog',
-        'cogs.attachment',
-        'cogs.backup_and_restore',
-        'cogs.callposts',
-        'cogs.currency_system',
-        'cogs.donation',
-        'cogs.mod_cog',
-        'cogs.report_cog',
-        'cogs.server_build',
-        'cogs.server_rules',
-        'cogs.server_statistics',
-        'cogs.store',
-        'cogs.trading',
-        'cogs.upload',
-        'cogs.user_info',
-        'cogs.utility_cog',
-        'cogs.verification'
-    ]
-
-    for extension in extensions:
+    if not bot.synced:
+        logger.info(f'Logged in as {bot.user}')
         try:
-            await bot.load_extension( extension )
-            print( f'Loaded extension: {extension}' )
-        except commands.ExtensionNotFound:
-            print( f'Extension {extension} not found.' )
-        except commands.ExtensionAlreadyLoaded:
-            print( f'Extension {extension} is already loaded.' )
-        except commands.NoEntryPointError:
-            print( f'Extension {extension} does not have a setup function.' )
-        except commands.ExtensionFailed as e:
-            print( f'Extension {extension} failed to load. Error: {e.__class__.__name__}: {e}' )
+            guild = discord.Object(id=int(GUILD_ID))  # Ensure you use the correct guild ID
+            await bot.tree.sync()  # Synchronize slash commands with the specific guild
+            logger.info(f'Slash commands synced with guild: {GUILD_ID}')
+        except discord.Forbidden:
+            logger.error(f"Error: Missing access to guild {GUILD_ID}")
+        except discord.HTTPException as e:
+            logger.error(f"HTTP error occurred while syncing commands with guild {GUILD_ID}: {e}")
+        bot.synced = True
+        logger.info('Bot is ready and slash commands are synced.')
+    else:
+        logger.info('Bot reconnected.')
 
+@bot.event
+async def on_resumed():
+    logger.info('Bot has resumed the session.')
+
+@bot.event
+async def on_disconnect():
+    logger.warning('Bot has disconnected from Discord.')
+
+@bot.event
+async def on_guild_join(guild):
+    logger.info(f"Bot joined guild: {guild.name} (ID: {guild.id})")
+
+@bot.event
+async def on_guild_remove(guild):
+    logger.info(f"Bot removed from guild: {guild.name} (ID: {guild.id})")
+
+# Error handling for command errors
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CommandNotFound):
+        await ctx.send("This command does not exist.")
+        logger.warning(f"Command not found: {ctx.message.content}")
+    else:
+        await ctx.send("An error occurred.")
+        logger.error(f"An error occurred: {error}", exc_info=True)
+
+# Load all extensions in the cogs directory
+async def load_extensions():
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py") and filename != "__init__.py":
+            extension = f"cogs.{filename[:-3]}"
+            try:
+                await bot.load_extension(extension)
+                logger.info(f"Loaded extension: {extension}")
+            except Exception as e:
+                logger.error(f"Failed to load extension {extension}.", exc_info=True)
 
 async def main():
+    logger.info("Starting bot...")
     async with bot:
-        await setup_extensions()
-        await bot.start( DISCORD_TOKEN )
-
+        await load_extensions()
+        await bot.start(DISCORD_TOKEN)
 
 if __name__ == "__main__":
-    asyncio.run( main() )
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        logger.critical(f"Critical error in bot startup: {e}", exc_info=True)

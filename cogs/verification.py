@@ -84,7 +84,11 @@ class Verification(commands.Cog):
     async def _get_or_create_role(self, guild: discord.Guild, role_name: str) -> discord.Role:
         role = discord.utils.get(guild.roles, name=role_name)
         if not role:
-            role = await guild.create_role(name=role_name, reason="Auto-created by bot")
+            role = await guild.create_role(
+                name=role_name,
+                reason="Auto-created by bot",
+                permissions=discord.Permissions(permissions=0)  # Customize permissions if needed
+            )
             logger.info(f"Created '{role_name}' role: {role.name} (ID: {role.id})")
         else:
             logger.debug(f"'{role_name}' role found: {role.name} (ID: {role.id})")
@@ -303,4 +307,3 @@ class Verification(commands.Cog):
 async def setup(bot: commands.Bot):
     cog = Verification(bot)
     await bot.add_cog(cog)
-

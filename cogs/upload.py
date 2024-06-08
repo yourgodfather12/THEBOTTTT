@@ -183,6 +183,15 @@ class UploadCog(commands.Cog):
     @app_commands.default_permissions()
     async def upload_command(self, interaction: discord.Interaction) -> None:
         """Command to trigger the file upload process."""
+        if not interaction.guild:
+            await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+            return
+
+        bot_permissions = interaction.guild.me.guild_permissions
+        if not (bot_permissions.manage_roles and bot_permissions.manage_channels and bot_permissions.send_messages):
+            await interaction.response.send_message("Bot does not have the required permissions to execute this command.", ephemeral=True)
+            return
+
         await interaction.response.send_message("File upload process started.", ephemeral=True)
         file_queue = asyncio.Queue()
         await self.enqueue_files(file_queue)

@@ -2,7 +2,8 @@ import asyncio
 import logging
 import os
 import re
-from typing import Optional
+from datetime import datetime
+from typing import Optional, List
 
 import aiofiles
 import aiohttp
@@ -12,6 +13,7 @@ from discord.ext import commands
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError, DBAPIError
 from tqdm.asyncio import tqdm
 
 from db.database import Attachment, Base  # Assuming Base is the declarative base for SQLAlchemy models
@@ -29,12 +31,20 @@ DOWNLOAD_TIMEOUT = int(os.getenv('DOWNLOAD_TIMEOUT', 60))  # Timeout in seconds 
 
 # Database setup
 DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db')
-engine = create_async_engine(DATABASE_URL, echo=True)
+engine = create_async_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
 
 async def init_db():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    for _ in range(5):  # Try to initialize the database connection up to 5 times
+        try:
+            async with engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+            logger.info("Database initialized successfully.")
+            return
+        except (SQLAlchemyError, DBAPIError) as e:
+            logger.error(f"Error initializing database: {e}")
+            await asyncio.sleep(5)
+    logger.critical("Failed to initialize database after several attempts.")
 
 class AttachmentCog(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -67,56 +77,65 @@ class AttachmentCog(commands.Cog):
                 if pbar:
                     pbar.update(1)
 
-    async def save_to_database(self, channel_name: str, post_dir_name: str, filename: str, file_path: str) -> None:
+    async def save_to_database(self, session: AsyncSession, attachments: List[Attachment]) -> None:
         """Save the attachment metadata to the database."""
-        async with SessionLocal() as session:
+        try:
             async with session.begin():
-                existing = await session.execute(
-                    select(Attachment).filter_by(file_path=file_path)
-                )
-                if existing.scalars().first():
-                    logger.info(f"Duplicate attachment found, skipping: {file_path}")
-                    return
-
-                attachment = Attachment(
-                    channel_name=channel_name,
-                    post_dir_name=post_dir_name,
-                    filename=filename,
-                    file_path=file_path
-                )
-                session.add(attachment)
+                session.add_all(attachments)
             await session.commit()
-            logger.info(f"Attachment metadata saved to database: {file_path}")
+            logger.info(f"{len(attachments)} attachments metadata saved to database")
+        except IntegrityError as e:
+            logger.error(f"Error saving attachments to database: {e}")
+            await session.rollback()
+        except SQLAlchemyError as e:
+            logger.error(f"Database error: {e}")
+            await session.rollback()
 
-    async def ensure_directories(self, channel_name: str, post_dir_name: str) -> str:
+    async def ensure_directories(self, guild_name: str, channel_name: str, post_dir_name: str) -> str:
         """Ensure the necessary directories exist and return the post directory path."""
-        channel_dir = os.path.join(DATA_DIR, channel_name)
+        guild_dir = os.path.join(DATA_DIR, guild_name)
+        channel_dir = os.path.join(guild_dir, channel_name)
         post_dir = os.path.join(channel_dir, post_dir_name)
         os.makedirs(post_dir, exist_ok=True)
         return post_dir
 
     async def save_attachments_from_message(self, message: discord.Message, pbar: Optional[tqdm] = None) -> None:
         """Save all attachments from a given message."""
-        attachments = message.attachments
+        if not message.attachments:
+            return
+
+        guild_name = message.guild.name
         channel_name = message.channel.name
         post_dir_name = ''.join(re.findall(r'\w+', ' '.join(message.content.split(maxsplit=2)[:2]))).lower()
-        post_dir = await self.ensure_directories(channel_name, post_dir_name)
+        post_dir = await self.ensure_directories(guild_name, channel_name, post_dir_name)
+        username = message.author.name
 
         async with aiohttp.ClientSession() as session:
-            tasks = []
-            for index, attachment in enumerate(attachments, start=1):
-                filename = attachment.filename
-                safe_filename = self.sanitize_filename(filename)
-                file_name_without_extension, extension = os.path.splitext(safe_filename)
-                file_path = os.path.join(post_dir, f"{file_name_without_extension}_{index}{extension}")
+            async with SessionLocal() as db_session:
+                tasks = []
+                attachments = []
 
-                if not await self.async_file_exists(file_path):
-                    tasks.append(self.download_attachment(session, attachment, file_path, pbar))
-                    await self.save_to_database(channel_name, post_dir_name, filename, file_path)
-                else:
-                    logger.info(f"Skipping already saved attachment: {file_path}")
+                for index, attachment in enumerate(message.attachments, start=1):
+                    filename = attachment.filename
+                    safe_filename = self.sanitize_filename(filename)
+                    file_name_without_extension, extension = os.path.splitext(safe_filename)
+                    file_path = os.path.join(post_dir, f"{file_name_without_extension}_{index}{extension}")
 
-            await asyncio.gather(*tasks)
+                    if not await self.async_file_exists(file_path):
+                        tasks.append(self.download_attachment(session, attachment, file_path, pbar))
+                        attachments.append(Attachment(
+                            username=username,
+                            channel_name=channel_name,
+                            post_dir_name=post_dir_name,
+                            filename=filename,
+                            file_path=file_path,
+                            timestamp=datetime.utcnow()
+                        ))
+                    else:
+                        logger.info(f"Skipping already saved attachment: {file_path}")
+
+                await asyncio.gather(*tasks)
+                await self.save_to_database(db_session, attachments)
 
     @staticmethod
     async def async_file_exists(file_path: str) -> bool:
@@ -172,12 +191,20 @@ class AttachmentCog(commands.Cog):
             for filename in files:
                 if filename.endswith(tuple(SUPPORTED_EXTENSIONS)):
                     file_path = os.path.join(root, filename)
-                    # Extract channel_name and post_dir_name from the file path
                     parts = file_path.split(os.sep)
-                    if len(parts) >= 3:
+                    if len(parts) >= 4:
+                        guild_name = parts[-4]
                         channel_name = parts[-3]
                         post_dir_name = parts[-2]
-                        await self.save_to_database(channel_name, post_dir_name, filename, file_path)
+                        async with SessionLocal() as session:
+                            await self.save_to_database(session, [Attachment(
+                                username=guild_name,
+                                channel_name=channel_name,
+                                post_dir_name=post_dir_name,
+                                filename=filename,
+                                file_path=file_path,
+                                timestamp=datetime.utcnow()
+                            )])
 
     @app_commands.command(name="fetch", description="Retroactively add attachments in the server to the database")
     @app_commands.default_permissions(administrator=True)
@@ -203,17 +230,30 @@ class AttachmentCog(commands.Cog):
     async def save_attachments_metadata(self, message: discord.Message) -> None:
         """Save metadata of all attachments from a given message to the database without downloading."""
         attachments = message.attachments
+        guild_name = message.guild.name
         channel_name = message.channel.name
         post_dir_name = ''.join(re.findall(r'\w+', ' '.join(message.content.split(maxsplit=2)[:2]))).lower()
-        post_dir = await self.ensure_directories(channel_name, post_dir_name)
+        post_dir = await self.ensure_directories(guild_name, channel_name, post_dir_name)
+        username = message.author.name
 
+        metadata = []
         for index, attachment in enumerate(attachments, start=1):
             filename = attachment.filename
             safe_filename = self.sanitize_filename(filename)
             file_name_without_extension, extension = os.path.splitext(safe_filename)
             file_path = os.path.join(post_dir, f"{file_name_without_extension}_{index}{extension}")
 
-            await self.save_to_database(channel_name, post_dir_name, filename, file_path)
+            metadata.append(Attachment(
+                username=username,
+                channel_name=channel_name,
+                post_dir_name=post_dir_name,
+                filename=filename,
+                file_path=file_path,
+                timestamp=datetime.utcnow()
+            ))
+
+        async with SessionLocal() as session:
+            await self.save_to_database(session, metadata)
 
     @app_commands.command(name="view_attachments", description="View saved attachments from the database")
     async def view_attachments(self, interaction: discord.Interaction) -> None:
@@ -230,7 +270,7 @@ class AttachmentCog(commands.Cog):
                 embed = discord.Embed(title="Saved Attachments", color=discord.Color.blue())
                 for attachment in attachments:
                     embed.add_field(name=f"{attachment.filename}",
-                                    value=f"Channel: {attachment.channel_name}\nPath: {attachment.file_path}",
+                                    value=f"Channel: {attachment.channel_name}\nPath: {attachment.file_path}\nTimestamp: {attachment.timestamp}",
                                     inline=False)
 
                 await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -252,5 +292,3 @@ async def setup(bot: commands.Bot):
     await init_db()  # Initialize the database
     cog = AttachmentCog(bot)
     await bot.add_cog(cog)
-    # Remove command registration from setup to avoid re-registration issues
-    # Commands are registered through the Cog itself now

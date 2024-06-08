@@ -3187,3 +3187,91 @@ FROM counties
 2024-06-07 12:56:25,555:INFO:cogs.backup_and_restore: Backup created for MI WINS (1241303594364309554), saved to backups\MI WINS_1241303594364309554.json
 2024-06-07 12:57:07,850:INFO:cogs.upload: Upload state saved.
 2024-06-07 12:57:07,851:INFO:cogs.user_info: User info state saved.
+2024-06-07 12:57:08,726:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-06-07 12:57:08,726:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("guilds")
+2024-06-07 12:57:08,726:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,727:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("members")
+2024-06-07 12:57:08,728:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,729:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("attachments")
+2024-06-07 12:57:08,729:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,730:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("user_currency")
+2024-06-07 12:57:08,730:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,731:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("counties")
+2024-06-07 12:57:08,731:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,732:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("recent_purchases")
+2024-06-07 12:57:08,732:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,732:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("trades")
+2024-06-07 12:57:08,733:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,733:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2024-06-07 12:57:08,733:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,734:INFO:sqlalchemy.engine.Engine: PRAGMA main.table_info("message_counts")
+2024-06-07 12:57:08,734:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-06-07 12:57:08,735:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-06-07 12:57:08,800:INFO:cogs.store: StoreCog initialized.
+2024-06-07 12:57:08,802:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-06-07 12:57:08,808:INFO:sqlalchemy.engine.Engine: SELECT counties.name, counties.folder_count 
+FROM counties
+2024-06-07 12:57:08,808:INFO:sqlalchemy.engine.Engine: [generated in 0.00018s] ()
+2024-06-07 12:57:08,810:ERROR:cogs.store: Configuration file not found at C:\Users\joshu\PycharmProjects\THEBOTTTT\config\county_config.py
+2024-06-07 12:57:08,810:INFO:sqlalchemy.engine.Engine: ROLLBACK
+2024-06-07 12:57:09,400:INFO:cogs.upload: Upload state loaded.
+2024-06-07 12:57:09,404:INFO:discord.client: logging in using static token
+2024-06-07 12:57:10,347:INFO:discord.gateway: Shard ID None has connected to Gateway (Session ID: 7b8f7ac03fe3b248abbe1c5228e4285d).
+2024-06-07 12:57:12,523:INFO:cogs.backup_and_restore: Bot is ready and logged in as TheDude#3643
+2024-06-07 12:57:12,524:INFO:cogs.verification: Bot is ready. Logged in as TheDude#3643
+2024-06-07 12:57:12,527:INFO:cogs.user_info: User info state loaded.
+2024-06-07 12:57:12,528:INFO:cogs.backup_and_restore: Backup created for OR WINS (1241317132449349672), saved to backups\OR WINS_1241317132449349672.json
+2024-06-07 12:57:12,528:INFO:cogs.user_info: Bot is ready. Loaded state from database\user_info_state.json
+2024-06-07 12:57:12,530:INFO:cogs.backup_and_restore: Backup created for MS WINS (1241304563344998410), saved to backups\MS WINS_1241304563344998410.json
+2024-06-07 12:57:12,532:INFO:cogs.backup_and_restore: Backup created for AR WINS (1241296302764199947), saved to backups\AR WINS_1241296302764199947.json
+2024-06-07 12:57:12,534:INFO:cogs.backup_and_restore: Backup created for IL WINS (1241299714754875513), saved to backups\IL WINS_1241299714754875513.json
+2024-06-07 12:57:12,535:INFO:cogs.backup_and_restore: Backup created for CA WINS (1241296744214695997), saved to backups\CA WINS_1241296744214695997.json
+2024-06-07 12:57:12,537:INFO:cogs.backup_and_restore: Backup created for NJ WINS (1241308080759640114), saved to backups\NJ WINS_1241308080759640114.json
+2024-06-07 12:57:12,539:INFO:cogs.backup_and_restore: Backup created for ID WINS (1241299340153323551), saved to backups\ID WINS_1241299340153323551.json
+2024-06-07 12:57:12,540:INFO:cogs.backup_and_restore: Backup created for AK WINS (1241292475222589510), saved to backups\AK WINS_1241292475222589510.json
+2024-06-07 12:57:12,542:INFO:cogs.backup_and_restore: Backup created for ND WINS (1241316183186214932), saved to backups\ND WINS_1241316183186214932.json
+2024-06-07 12:57:12,543:INFO:cogs.backup_and_restore: Backup created for CT WINS (1241297611542102017), saved to backups\CT WINS_1241297611542102017.json
+2024-06-07 12:57:12,545:INFO:cogs.backup_and_restore: Backup created for AL WINS (1241291060571934771), saved to backups\AL WINS_1241291060571934771.json
+2024-06-07 12:57:12,548:INFO:cogs.backup_and_restore: Backup created for NE WINS (1241305752904400978), saved to backups\NE WINS_1241305752904400978.json
+2024-06-07 12:57:12,549:INFO:cogs.backup_and_restore: Backup created for MN WINS (1241304046623789086), saved to backups\MN WINS_1241304046623789086.json
+2024-06-07 12:57:12,551:INFO:cogs.backup_and_restore: Backup created for KS WINS (1241301275849785354), saved to backups\KS WINS_1241301275849785354.json
+2024-06-07 12:57:12,553:INFO:cogs.backup_and_restore: Backup created for NY WINS (1241234071884136589), saved to backups\NY WINS_1241234071884136589.json
+2024-06-07 12:57:12,554:INFO:cogs.backup_and_restore: Backup created for AZ WINS (1241295608719872013), saved to backups\AZ WINS_1241295608719872013.json
+2024-06-07 12:57:12,556:INFO:cogs.backup_and_restore: Backup created for MA WINS (1241302960399716476), saved to backups\MA WINS_1241302960399716476.json
+2024-06-07 12:57:12,558:INFO:cogs.backup_and_restore: Backup created for KENTUCKY - PREMIUM (1241220627382272011), saved to backups\KENTUCKY - PREMIUM_1241220627382272011.json
+2024-06-07 12:57:12,560:INFO:cogs.backup_and_restore: Backup created for NC WINS (1241309027481157682), saved to backups\NC WINS_1241309027481157682.json
+2024-06-07 12:57:12,561:INFO:cogs.backup_and_restore: Backup created for DE WINS (1241297995195093094), saved to backups\DE WINS_1241297995195093094.json
+2024-06-07 12:57:12,562:INFO:cogs.backup_and_restore: Backup created for MD WINS (1241302511269314611), saved to backups\MD WINS_1241302511269314611.json
+2024-06-07 12:57:12,564:INFO:cogs.backup_and_restore: Backup created for OK WINS (1241316644215590963), saved to backups\OK WINS_1241316644215590963.json
+2024-06-07 12:57:12,566:INFO:cogs.backup_and_restore: Backup created for MO WINS (1241304919651389482), saved to backups\MO WINS_1241304919651389482.json
+2024-06-07 12:57:12,568:INFO:cogs.backup_and_restore: Backup created for PA WINS (1241317614928793631), saved to backups\PA WINS_1241317614928793631.json
+2024-06-07 12:57:12,570:INFO:cogs.backup_and_restore: Backup created for RI WINS (1241318028260409374), saved to backups\RI WINS_1241318028260409374.json
+2024-06-07 12:57:12,572:INFO:cogs.backup_and_restore: Backup created for IN WINS (1241300203605200949), saved to backups\IN WINS_1241300203605200949.json
+2024-06-07 12:57:12,574:INFO:cogs.backup_and_restore: Backup created for GA WINS (1241298376851460138), saved to backups\GA WINS_1241298376851460138.json
+2024-06-07 12:57:12,575:INFO:cogs.backup_and_restore: Backup created for NM WINS (1241308592003350579), saved to backups\NM WINS_1241308592003350579.json
+2024-06-07 12:57:12,577:INFO:cogs.backup_and_restore: Backup created for MT WINS (1241305301722992660), saved to backups\MT WINS_1241305301722992660.json
+2024-06-07 12:57:12,578:INFO:cogs.backup_and_restore: Backup created for NH WINS (1241307368638255116), saved to backups\NH WINS_1241307368638255116.json
+2024-06-07 12:57:12,581:INFO:cogs.backup_and_restore: Backup created for TX WINS (1238953344450564116), saved to backups\TX WINS_1238953344450564116.json
+2024-06-07 12:57:12,583:INFO:cogs.backup_and_restore: Backup created for ME WINS (1241302136172838954), saved to backups\ME WINS_1241302136172838954.json
+2024-06-07 12:57:12,585:INFO:cogs.backup_and_restore: Backup created for KY WINS (1234523847684915220), saved to backups\KY WINS_1234523847684915220.json
+2024-06-07 12:57:12,586:INFO:cogs.backup_and_restore: Backup created for HI WINS (1241298820633985035), saved to backups\HI WINS_1241298820633985035.json
+2024-06-07 12:57:12,588:INFO:cogs.backup_and_restore: Backup created for NV WINS (1241306183961280564), saved to backups\NV WINS_1241306183961280564.json
+2024-06-07 12:57:12,590:INFO:cogs.backup_and_restore: Backup created for LA WINS (1241301737512370267), saved to backups\LA WINS_1241301737512370267.json
+2024-06-07 12:57:12,591:INFO:cogs.backup_and_restore: Backup created for IA WINS (1241300673749057566), saved to backups\IA WINS_1241300673749057566.json
+2024-06-07 12:57:12,593:INFO:cogs.backup_and_restore: Backup created for FL WINS (1241270724623335484), saved to backups\FL WINS_1241270724623335484.json
+2024-06-07 12:57:12,595:INFO:cogs.backup_and_restore: Backup created for CO WINS (1241297165389664256), saved to backups\CO WINS_1241297165389664256.json
+2024-06-07 12:57:12,596:INFO:cogs.backup_and_restore: Backup created for MI WINS (1241303594364309554), saved to backups\MI WINS_1241303594364309554.json
+2024-06-07 12:58:56,713:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-06-07 12:58:56,719:INFO:sqlalchemy.engine.Engine: SELECT attachments.id, attachments.username, attachments.channel_name, attachments.post_dir_name, attachments.filename, attachments.file_path 
+FROM attachments 
+WHERE attachments.file_path = ?
+2024-06-07 12:58:56,719:INFO:sqlalchemy.engine.Engine: [generated in 0.00084s] ('data\\verification\\meggiedegrio\\fa657687aedf47973c2ccbadceb37f0c8425834d22524192b2189de55df75751_1.png',)
+2024-06-07 12:58:56,725:INFO:sqlalchemy.engine.Engine: INSERT INTO attachments (username, channel_name, post_dir_name, filename, file_path) VALUES (?, ?, ?, ?, ?)
+2024-06-07 12:58:56,727:INFO:sqlalchemy.engine.Engine: [generated in 0.00047s] (None, 'verification', 'meggiedegrio', 'fa657687aedf47973c2ccbadceb37f0c8425834d22524192b2189de55df75751.png', 'data\\verification\\meggiedegrio\\fa657687aedf47973c2ccbadceb37f0c8425834d22524192b2189de55df75751_1.png')
+2024-06-07 12:58:56,728:INFO:sqlalchemy.engine.Engine: ROLLBACK
+2024-06-07 12:58:56,730:ERROR:cogs.attachment: Error fetching past attachments: (sqlite3.IntegrityError) NOT NULL constraint failed: attachments.username
+[SQL: INSERT INTO attachments (username, channel_name, post_dir_name, filename, file_path) VALUES (?, ?, ?, ?, ?)]
+[parameters: (None, 'verification', 'meggiedegrio', 'fa657687aedf47973c2ccbadceb37f0c8425834d22524192b2189de55df75751.png', 'data\\verification\\meggiedegrio\\fa657687aedf47973c2ccbadceb37f0c8425834d22524192b2189de55df75751_1.png')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-06-07 12:59:37,334:INFO:cogs.upload: Upload state saved.
+2024-06-07 12:59:37,336:INFO:cogs.user_info: User info state saved.

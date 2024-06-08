@@ -1,6 +1,6 @@
-import json
-import logging
 import os
+import logging
+import json
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -22,6 +22,7 @@ class UserInfoCog(commands.Cog):
         self.voice_start_times = {}
         self.state_file = os.path.join("database", "user_info_state.json")
         self.ensure_db_path_exists()
+        self.bot.loop.create_task(self.load_state())
 
     def ensure_db_path_exists(self) -> None:
         """Ensure the directory for the state file exists."""
@@ -91,7 +92,6 @@ class UserInfoCog(commands.Cog):
 
     @app_commands.command(name='userinfo', description='Displays information about a user.')
     @app_commands.describe(member="The member to display information for.")
-    @app_commands.default_permissions(administrator=True)
     async def user_info(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
         """Display user information."""
         member = member or interaction.user
@@ -136,4 +136,3 @@ async def setup(bot: commands.Bot) -> None:
     """Setup function to add the cog to the bot."""
     cog = UserInfoCog(bot)
     await bot.add_cog(cog)
-

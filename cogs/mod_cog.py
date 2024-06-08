@@ -336,5 +336,4 @@ async def on_command_error(interaction: discord.Interaction, error: app_commands
 async def setup(bot: commands.Bot):
     cog = ModCog(bot)
     await bot.add_cog(cog)
-    # Removed duplicate command registrations
     bot.tree.on_error = on_command_error

@@ -18,6 +18,7 @@ class ServerRulesCog(commands.Cog):
         try:
             if not interaction.channel.permissions_for(interaction.guild.me).embed_links:
                 await interaction.response.send_message("I need the `Embed Links` permission to send rules.", ephemeral=True)
+                logger.warning("Missing `Embed Links` permission.")
                 return
 
             rules = [
@@ -44,11 +45,15 @@ class ServerRulesCog(commands.Cog):
 
             await interaction.response.send_message(embed=embed)
             logger.info("Server rules displayed successfully.")
+        except discord.Forbidden:
+            logger.warning("Bot doesn't have permission to send messages or embeds.")
+        except discord.HTTPException as http_exc:
+            logger.error(f"HTTP exception occurred: {http_exc}")
+            await interaction.response.send_message("An error occurred while displaying the rules. Please try again later.", ephemeral=True)
         except Exception as e:
-            logger.error(f"Error displaying server rules: {e}")
+            logger.error(f"Error displaying server rules: {e}", exc_info=True)
             await interaction.response.send_message("An error occurred while displaying the rules. Please try again later.", ephemeral=True)
 
 async def setup(bot: commands.Bot):
     cog = ServerRulesCog(bot)
     await bot.add_cog(cog)
-    # Removed duplicate command registration

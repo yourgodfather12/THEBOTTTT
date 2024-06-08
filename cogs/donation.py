@@ -8,6 +8,15 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Ensure the logs directory exists
+if not os.path.exists('logs'):
+    os.makedirs('logs')
+
+# Set up logging
+logging.basicConfig(filename='logs/donation.log', level=logging.INFO,
+                    format='%(asctime)s:%(levelname)s:%(name)s: %(message)s')
+logger = logging.getLogger(__name__)
+
 class DonationCog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -49,11 +58,16 @@ class DonationCog(commands.Cog):
                 embed.add_field(name=crypto, value=address, inline=False)
 
             await interaction.response.send_message(embed=embed, ephemeral=True)
+            logger.info("Displayed donation addresses.")
         except discord.Forbidden:
-            await interaction.user.send("I don't have permission to send messages in that channel.")
+            try:
+                await interaction.user.send("I don't have permission to send messages in that channel.")
+                logger.warning(f"Forbidden to send messages in channel {interaction.channel.id}.")
+            except discord.Forbidden:
+                logger.error(f"Failed to send forbidden message to {interaction.user.id}.")
         except Exception as e:
             await interaction.response.send_message("An error occurred while processing the command.", ephemeral=True)
-            logging.error(f"Error in donate command: {e}")
+            logger.error(f"Error in donate command: {e}")
 
 async def setup(bot: commands.Bot):
     cog = DonationCog(bot)

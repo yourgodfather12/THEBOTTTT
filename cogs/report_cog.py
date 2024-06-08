@@ -108,7 +108,6 @@ class ReportCog(commands.Cog):
             )
 
 # Error handler for slash commands
-@commands.Cog.listener()
 async def on_command_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.MissingPermissions):
         await interaction.response.send_message(embed=discord.Embed(
@@ -130,5 +129,4 @@ async def on_command_error(interaction: discord.Interaction, error: app_commands
 async def setup(bot: commands.Bot):
     cog = ReportCog(bot)
     await bot.add_cog(cog)
-    # Removed duplicate command registrations
     bot.tree.on_error = on_command_error
