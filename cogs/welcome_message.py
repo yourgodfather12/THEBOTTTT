@@ -1,52 +1,63 @@
 import discord
 from discord.ext import commands
+import logging
+import os
+from dotenv import load_dotenv
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+
+# Load environment variables from .env file
+load_dotenv()
 
 class WelcomeMessage(commands.Cog):
-    def __init__(self, bot, welcome_channel_id):
+    def __init__(self, bot):
         self.bot = bot
-        self.welcome_channel_id = welcome_channel_id
+        self.load_config()
+
+    def load_config(self):
+        # Load welcome message from environment variable or use default
+        self.welcome_message = os.getenv(
+            'WELCOME_MESSAGE',
+            "Welcome to the server, {member.name}! We're glad to have you here."
+        )
+        self.rules_channel_id = int(os.getenv('RULES_CHANNEL_ID', 0))
+        self.help_channel_id = int(os.getenv('HELP_CHANNEL_ID', 0))
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
         try:
-            channel = self.bot.get_channel(self.welcome_channel_id)
-            if channel is None:
-                channel = member.guild.system_channel
-                if channel is None:
-                    self.bot.logger.warning(f"No welcome channel found for guild: {member.guild.name}")
-                    return
-
-            welcome_message = (
-                f'Welcome to the server, {member.mention}! We hope you enjoy your stay.\n\n'
-                'Please make sure to read and follow the server rules:\n'
-                '1. **No Underage Content**\n'
-                'Posting, sharing, or discussing any content that involves individuals under the legal age of consent is strictly prohibited. This includes, but is not limited to, images, videos, or discussions that depict or suggest underage individuals in explicit or inappropriate situations.\n\n'
-                '2. **Permission for Posting Pics**\n'
-                'Members must obtain explicit consent before posting any pictures of individuals, whether they are themselves or others. This rule ensures that all posted content respects the privacy and consent of the individuals involved.\n\n'
-                '3. **Verification Process**\n'
-                'To become verified, members must post a nude picture in the verify channel following the format (First_name Last_name, county). Failure to comply with this requirement will result in non-verification. This process helps maintain accountability and authenticity within the community.\n\n'
-                '4. **No White Knights**\n'
-                'White knighting is not allowed and will result in disciplinary action.\n\n'
-                '5. **Weekly Image Posting Requirement**\n'
-                'To remain active in the server, members must post a minimum of five images every week. Failure to meet this requirement will result in being kicked from the server. The bot will automatically remove members who have not posted the required number of images every Friday at 11 am sharp.\n\n'
-                '6. **Posting Verification Picture**\n'
-                'After being verified, new members must post their verification picture in the county they are from. This ensures that verified members are transparent about their location and helps maintain accountability within the community.\n\n'
-                'Verification Instructions:\n'
-                'To get verified, make sure you follow this format:\n'
-                'For example:\n'
-                '`Jane Doe, Fayette Co`\n\n'
-                'Please make sure:\n'
-                '- The first letter of the first name (FirstName) is capitalized.\n'
-                '- The first letter of the last name (LastName) is capitalized.\n'
-                '- There is a comma after the last name.\n'
-                '- The first letter of the county name (CountyName) is capitalized.\n'
-                '- The abbreviation \'Co\' is used after the county name, and it is capitalized.\n\n'
-                'These rules are subject to change, so please check back regularly.'
+            embed = discord.Embed(
+                title="🎉 Welcome to Our Server! 🎉",
+                description=self.welcome_message.format(member=member),
+                color=discord.Color.blue()
             )
 
-            await channel.send(welcome_message)
+            if self.rules_channel_id:
+                rules_channel = self.bot.get_channel(self.rules_channel_id)
+                if rules_channel:
+                    embed.add_field(
+                        name="📜 **Rules** 📜",
+                        value=f"Please make sure to read the [rules]({rules_channel.jump_url}) to avoid any issues.",
+                        inline=False
+                    )
+
+            if self.help_channel_id:
+                help_channel = self.bot.get_channel(self.help_channel_id)
+                if help_channel:
+                    embed.add_field(
+                        name="🆘 **Need Help?** 🆘",
+                        value=f"If you have any questions, feel free to ask in the [help channel]({help_channel.jump_url}).",
+                        inline=False
+                    )
+
+            await member.send(embed=embed)
+            logging.info(f"Sent welcome message to {member.name}")
+
+        except discord.Forbidden:
+            logging.warning(f"Could not send welcome message to {member.name} - Forbidden")
         except Exception as e:
-            self.bot.logger.error(f"Failed to send welcome message: {e}")
+            logging.error(f"An error occurred when sending welcome message to {member.name}: {e}")
 
 async def setup(bot):
-    await bot.add_cog(WelcomeMessage(bot, YOUR_WELCOME_CHANNEL_ID))
+    await bot.add_cog(WelcomeMessage(bot))

@@ -40,10 +40,11 @@ class AdminCog(commands.Cog):
     @app_commands.command(name="lockdown", description="Locks down the entire server, preventing all messages except from administrators.")
     @app_commands.checks.has_permissions(administrator=True)
     async def lockdown(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         for channel in interaction.guild.text_channels:
             await channel.set_permissions(interaction.guild.default_role, send_messages=False)
             await asyncio.sleep(1)  # Adding delay to prevent rate limiting
-        await interaction.response.send_message(
+        await interaction.followup.send(
             embed=discord.Embed(
                 description="Server locked down. Only administrators can send messages.",
                 color=discord.Color.orange()
@@ -54,10 +55,11 @@ class AdminCog(commands.Cog):
     @app_commands.command(name="unlockdown", description="Unlocks the server after a lockdown.")
     @app_commands.checks.has_permissions(administrator=True)
     async def unlockdown(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         for channel in interaction.guild.text_channels:
             await channel.set_permissions(interaction.guild.default_role, send_messages=True)
             await asyncio.sleep(1)  # Adding delay to prevent rate limiting
-        await interaction.response.send_message(
+        await interaction.followup.send(
             embed=discord.Embed(
                 description="Server unlocked.",
                 color=discord.Color.green()
@@ -68,6 +70,7 @@ class AdminCog(commands.Cog):
     @app_commands.command(name="delete_all", description="Delete all channels and categories recursively.")
     @app_commands.checks.has_permissions(manage_channels=True)
     async def delete_all(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         try:
             for category in interaction.guild.categories:
                 for channel in category.channels:
@@ -75,7 +78,7 @@ class AdminCog(commands.Cog):
                     await asyncio.sleep(1)  # Adding delay to prevent rate limiting
                 await category.delete()
                 await asyncio.sleep(1)  # Adding delay to prevent rate limiting
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="All categories and channels deleted successfully!",
                     color=discord.Color.green()
@@ -83,7 +86,7 @@ class AdminCog(commands.Cog):
             )
             logger.info(f"All categories and channels deleted by {interaction.user.name} in {interaction.guild.name}")
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="Error: I don't have permission to perform this action.",
                     color=discord.Color.red()
@@ -91,7 +94,7 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to delete channels and categories by {interaction.user.name} in {interaction.guild.name}: Missing Permissions")
         except discord.HTTPException as e:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"Error: An unexpected error occurred: {e}",
                     color=discord.Color.red()
@@ -99,15 +102,16 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to delete channels and categories by {interaction.user.name} in {interaction.guild.name}: {e}")
 
-    @app_commands.command(name="kick_users", description="Kicks all users with the Must Verify role")
+    @app_commands.command(name="kick_users", description="Kicks all users with the MUST VERIFY role")
     @app_commands.checks.has_permissions(kick_members=True)
     async def kick_users(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         guild = interaction.guild
-        must_verify_role = discord.utils.get(guild.roles, name="Must Verify")
+        must_verify_role = discord.utils.get(guild.roles, name="MUST VERIFY")
         if must_verify_role is None:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
-                    description="The 'Must Verify' role does not exist.",
+                    description="The 'MUST VERIFY' role does not exist.",
                     color=discord.Color.red()
                 ),
                 ephemeral=True
@@ -126,21 +130,22 @@ class AdminCog(commands.Cog):
                 except discord.HTTPException as e:
                     logger.error(f"Failed to kick {member.name} by {interaction.user.name} in {interaction.guild.name}: {e}")
 
-        await interaction.response.send_message(
+        await interaction.followup.send(
             embed=discord.Embed(
-                description=f"{kick_count} users with the 'Must Verify' role have been kicked.",
+                description=f"{kick_count} users with the 'MUST VERIFY' role have been kicked.",
                 color=discord.Color.green()
             ),
             ephemeral=True
         )
-        logger.info(f"{kick_count} users with the 'Must Verify' role have been kicked by {interaction.user.name} in {interaction.guild.name}")
+        logger.info(f"{kick_count} users with the 'MUST VERIFY' role have been kicked by {interaction.user.name} in {interaction.guild.name}")
 
     @app_commands.command(name="add_role", description="Adds a role to a user.")
     @app_commands.describe(user="The user to add the role to", role="The role to add")
     @app_commands.checks.has_permissions(manage_roles=True)
     async def add_role(self, interaction: discord.Interaction, user: discord.Member, role: discord.Role):
+        await interaction.response.defer(ephemeral=True)
         if role in user.roles:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"{user.mention} already has the {role.name} role.",
                     color=discord.Color.red()
@@ -150,7 +155,7 @@ class AdminCog(commands.Cog):
             return
         try:
             await user.add_roles(role)
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"Added {role.name} role to {user.mention}.",
                     color=discord.Color.green()
@@ -159,7 +164,7 @@ class AdminCog(commands.Cog):
             )
             logger.info(f"Added {role.name} role to {user.name} by {interaction.user.name} in {interaction.guild.name}")
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="I do not have permission to add roles.",
                     color=discord.Color.red()
@@ -168,7 +173,7 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to add role {role.name} to {user.name} by {interaction.user.name} in {interaction.guild.name}: Missing Permissions")
         except discord.HTTPException as e:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="An error occurred while trying to add the role.",
                     color=discord.Color.red()
@@ -181,8 +186,9 @@ class AdminCog(commands.Cog):
     @app_commands.describe(user="The user to remove the role from", role="The role to remove")
     @app_commands.checks.has_permissions(manage_roles=True)
     async def remove_role(self, interaction: discord.Interaction, user: discord.Member, role: discord.Role):
+        await interaction.response.defer(ephemeral=True)
         if role not in user.roles:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"{user.mention} does not have the {role.name} role.",
                     color=discord.Color.red()
@@ -192,7 +198,7 @@ class AdminCog(commands.Cog):
             return
         try:
             await user.remove_roles(role)
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"Removed {role.name} role from {user.mention}.",
                     color=discord.Color.green()
@@ -201,7 +207,7 @@ class AdminCog(commands.Cog):
             )
             logger.info(f"Removed {role.name} role from {user.name} by {interaction.user.name} in {interaction.guild.name}")
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="I do not have permission to remove roles.",
                     color=discord.Color.red()
@@ -210,7 +216,7 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to remove role {role.name} from {user.name} by {interaction.user.name} in {interaction.guild.name}: Missing Permissions")
         except discord.HTTPException as e:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="An error occurred while trying to remove the role.",
                     color=discord.Color.red()
@@ -223,9 +229,10 @@ class AdminCog(commands.Cog):
     @app_commands.describe(channel="The channel to send the announcement to", message="The message to announce")
     @app_commands.checks.has_permissions(administrator=True)
     async def announce(self, interaction: discord.Interaction, channel: discord.TextChannel, message: str):
+        await interaction.response.defer(ephemeral=True)
         try:
             await channel.send(message)
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"Announcement sent to {channel.mention}.",
                     color=discord.Color.green()
@@ -234,7 +241,7 @@ class AdminCog(commands.Cog):
             )
             logger.info(f"Announcement sent to {channel.name} by {interaction.user.name} in {interaction.guild.name}")
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="I do not have permission to send messages to this channel.",
                     color=discord.Color.red()
@@ -243,7 +250,7 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to send announcement to {channel.name} by {interaction.user.name} in {interaction.guild.name}: Missing Permissions")
         except discord.HTTPException as e:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="An error occurred while trying to send the announcement.",
                     color=discord.Color.red()
@@ -256,9 +263,10 @@ class AdminCog(commands.Cog):
     @app_commands.describe(name="The new name for the server")
     @app_commands.checks.has_permissions(manage_guild=True)
     async def change_server_name(self, interaction: discord.Interaction, name: str):
+        await interaction.response.defer(ephemeral=True)
         try:
             await interaction.guild.edit(name=name)
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description=f"Server name changed to {name}.",
                     color=discord.Color.green()
@@ -267,7 +275,7 @@ class AdminCog(commands.Cog):
             )
             logger.info(f"Server name changed to {name} by {interaction.user.name} in {interaction.guild.name}")
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="I do not have permission to change the server name.",
                     color=discord.Color.red()
@@ -276,7 +284,7 @@ class AdminCog(commands.Cog):
             )
             logger.error(f"Failed to change the server name by {interaction.user.name} in {interaction.guild.name}: Missing Permissions")
         except discord.HTTPException as e:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 embed=discord.Embed(
                     description="An error occurred while trying to change the server name.",
                     color=discord.Color.red()

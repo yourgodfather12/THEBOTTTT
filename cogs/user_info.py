@@ -1,13 +1,14 @@
 import os
 import logging
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Optional
 
 import aiofiles
 import discord
 from discord import app_commands
 from discord.ext import commands
+import asyncio
 
 # Initialize the logger
 logging.basicConfig(level=logging.INFO)
@@ -22,6 +23,7 @@ class UserInfoCog(commands.Cog):
         self.voice_start_times = {}
         self.state_file = os.path.join("database", "user_info_state.json")
         self.ensure_db_path_exists()
+        self.lock = asyncio.Lock()
         self.bot.loop.create_task(self.load_state())
 
     def ensure_db_path_exists(self) -> None:
@@ -30,34 +32,36 @@ class UserInfoCog(commands.Cog):
 
     async def save_state(self) -> None:
         """Save the current state to a file."""
-        try:
-            state = {
-                "message_counts": self.message_counts,
-                "voice_times": self.voice_times
-            }
-            async with aiofiles.open(self.state_file, "w") as f:
-                await f.write(json.dumps(state))
-            logger.info("User info state saved.")
-        except Exception as e:
-            logger.error(f"Failed to save user info state: {e}")
+        async with self.lock:
+            try:
+                state = {
+                    "message_counts": self.message_counts,
+                    "voice_times": self.voice_times
+                }
+                async with aiofiles.open(self.state_file, "w") as f:
+                    await f.write(json.dumps(state))
+                logger.info("User info state saved.")
+            except Exception as e:
+                logger.error(f"Failed to save user info state: {e}")
 
     async def load_state(self) -> None:
         """Load the state from a file."""
-        if os.path.exists(self.state_file):
-            try:
-                async with aiofiles.open(self.state_file, "r") as f:
-                    content = await f.read()
-                    if content:
-                        state = json.loads(content)
-                        self.message_counts = state.get("message_counts", {})
-                        self.voice_times = state.get("voice_times", {})
-                        logger.info("User info state loaded.")
-                    else:
-                        logger.warning("User info state file is empty.")
-            except json.JSONDecodeError as e:
-                logger.error(f"Failed to load user info state: Invalid JSON format. {e}")
-            except Exception as e:
-                logger.error(f"Failed to load user info state: {e}")
+        async with self.lock:
+            if os.path.exists(self.state_file):
+                try:
+                    async with aiofiles.open(self.state_file, "r") as f:
+                        content = await f.read()
+                        if content:
+                            state = json.loads(content)
+                            self.message_counts = state.get("message_counts", {})
+                            self.voice_times = state.get("voice_times", {})
+                            logger.info("User info state loaded.")
+                        else:
+                            logger.warning("User info state file is empty.")
+                except json.JSONDecodeError as e:
+                    logger.error(f"Failed to load user info state: Invalid JSON format. {e}")
+                except Exception as e:
+                    logger.error(f"Failed to load user info state: {e}")
 
     @commands.Cog.listener()
     async def on_ready(self) -> None:
@@ -116,6 +120,24 @@ class UserInfoCog(commands.Cog):
 
         await interaction.response.send_message(embed=embed)
         logger.info(f"Displayed user info for {member.display_name} ({member.id}).")
+
+    @app_commands.command(name='reset_message_count', description='Resets the message count for a user.')
+    @app_commands.describe(member="The member to reset the message count for.")
+    async def reset_message_count(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
+        """Reset the message count for a user."""
+        member = member or interaction.user
+        self.message_counts[member.id] = 0
+        await interaction.response.send_message(f"Message count for {member.display_name} has been reset.", ephemeral=True)
+        logger.info(f"Reset message count for {member.display_name} ({member.id}).")
+
+    @app_commands.command(name='reset_voice_time', description='Resets the voice time for a user.')
+    @app_commands.describe(member="The member to reset the voice time for.")
+    async def reset_voice_time(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
+        """Reset the voice time for a user."""
+        member = member or interaction.user
+        self.voice_times[member.id] = 0
+        await interaction.response.send_message(f"Voice time for {member.display_name} has been reset.", ephemeral=True)
+        logger.info(f"Reset voice time for {member.display_name} ({member.id}).")
 
     async def cog_unload(self) -> None:
         """Save the state when the cog is unloaded."""

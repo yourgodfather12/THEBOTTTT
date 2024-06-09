@@ -39,22 +39,25 @@ class UploadCog(commands.Cog):
 
     async def save_state(self) -> None:
         """Save the current upload state to a file."""
-        try:
-            async with aiofiles.open(self.resume_state_file, "w") as f:
-                await f.write(json.dumps(list(self.uploaded_files)))
-            logger.info("Upload state saved.")
-        except Exception as e:
-            logger.error(f"Failed to save upload state: {e}")
+        async with self.upload_semaphore:
+            try:
+                async with aiofiles.open(self.resume_state_file, "w") as f:
+                    await f.write(json.dumps(list(self.uploaded_files)))
+                logger.info("Upload state saved.")
+            except Exception as e:
+                logger.error(f"Failed to save upload state: {e}")
 
     async def load_state(self) -> None:
         """Load the upload state from a file."""
         if os.path.exists(self.resume_state_file):
-            try:
-                async with aiofiles.open(self.resume_state_file, "r") as f:
-                    self.uploaded_files = set(json.loads(await f.read()))
-                logger.info("Upload state loaded.")
-            except Exception as e:
-                logger.error(f"Failed to load upload state: {e}")
+            async with self.upload_semaphore:
+                try:
+                    async with aiofiles.open(self.resume_state_file, "r") as f:
+                        content = await f.read()
+                        self.uploaded_files = set(json.loads(content))
+                    logger.info("Upload state loaded.")
+                except Exception as e:
+                    logger.error(f"Failed to load upload state: {e}")
 
     async def enqueue_files(self, file_queue: asyncio.Queue) -> None:
         """Enqueue files for processing."""

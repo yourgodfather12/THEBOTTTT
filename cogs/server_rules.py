@@ -22,15 +22,63 @@ class ServerRulesCog(commands.Cog):
                 return
 
             rules = [
-                {"title": "1. Be Respectful", "description": "Treat everyone with respect. Absolutely no harassment, witch hunting, sexism, racism, or hate speech will be tolerated."},
-                {"title": "2. No Spam", "description": "Don't spam messages, images, or reactions."},
-                {"title": "3. No NSFW Content", "description": "This server is SFW. Do not post or discuss any NSFW content."},
-                {"title": "4. Follow Discord's Terms of Service", "description": "Make sure to follow [Discord's Terms of Service](https://discord.com/terms) and [Community Guidelines](https://discord.com/guidelines)."},
-                {"title": "5. No Self-Promotion", "description": "Do not promote your own content without permission from the server staff."},
-                {"title": "6. Use Appropriate Channels", "description": "Post content in the appropriate channels. Read the channel descriptions for guidance."},
-                {"title": "7. No Impersonation", "description": "Do not impersonate other users, including staff members."},
-                {"title": "8. Respect Privacy", "description": "Do not share personal information of yourself or others."},
+                {
+                    "title": "1. No Underage Content",
+                    "description": (
+                        "Posting, sharing, or discussing any content that involves individuals under the legal age of consent "
+                        "is strictly prohibited. This includes, but is not limited to, images, videos, or discussions that depict "
+                        "or suggest underage individuals in explicit or inappropriate situations."
+                    )
+                },
+                {
+                    "title": "2. Permission for Posting Pics",
+                    "description": (
+                        "Members must obtain explicit consent before posting any pictures of individuals, whether they are "
+                        "themselves or others. This rule ensures that all posted content respects the privacy and consent of the "
+                        "individuals involved."
+                    )
+                },
+                {
+                    "title": "3. Verification Process",
+                    "description": (
+                        "To become verified, members must post a nude picture in the verify channel following the format (First_name "
+                        "Last_name, county). Failure to comply with this requirement will result in non-verification. This process "
+                        "helps maintain accountability and authenticity within the community."
+                    )
+                },
+                {
+                    "title": "4. No White Knights",
+                    "description": "White knighting is not allowed and will result in disciplinary action."
+                },
+                {
+                    "title": "5. Weekly Image Posting Requirement",
+                    "description": (
+                        "To remain active in the server, members must post a minimum of five images every week. Failure to meet this "
+                        "requirement will result in being kicked from the server. The bot will automatically remove members who have "
+                        "not posted the required number of images every Friday at 11 am sharp."
+                    )
+                },
+                {
+                    "title": "6. Posting Verification Picture",
+                    "description": (
+                        "After being verified, new members must post their verification picture in the county they are from. This "
+                        "ensures that verified members are transparent about their location and helps maintain accountability within "
+                        "the community."
+                    )
+                }
             ]
+
+            verification_instructions = (
+                "To get verified, make sure you follow this format:\n"
+                "For example:\n"
+                "Jane Doe, Fayette Co\n\n"
+                "Please make sure:\n"
+                "- The first letter of the first name (FirstName) is capitalized.\n"
+                "- The first letter of the last name (LastName) is capitalized.\n"
+                "- There is a comma after the last name.\n"
+                "- The first letter of the county name (CountyName) is capitalized.\n"
+                "- The abbreviation 'Co' is used after the county name, and it is capitalized."
+            )
 
             embed = discord.Embed(
                 title="Server Rules",
@@ -41,6 +89,7 @@ class ServerRulesCog(commands.Cog):
             for rule in rules:
                 embed.add_field(name=rule["title"], value=rule["description"], inline=False)
 
+            embed.add_field(name="Verification Instructions", value=verification_instructions, inline=False)
             embed.set_footer(text="These rules are subject to change, so please check back regularly.")
 
             await interaction.response.send_message(embed=embed)

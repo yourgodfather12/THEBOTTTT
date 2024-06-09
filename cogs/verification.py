@@ -58,6 +58,10 @@ class Verification(commands.Cog):
             logger.critical(f"Guild with ID {GUILD_ID} not found.")
             return
 
+        if not self._has_manage_roles_permission(guild.me) or not self._has_kick_permission(guild.me):
+            logger.critical("Bot lacks the necessary permissions to manage roles or kick members.")
+            return
+
         for _ in range(3):
             try:
                 await self._fetch_or_create_roles(guild)
@@ -303,6 +307,13 @@ class Verification(commands.Cog):
         Check if the member has the Kick Members permission.
         """
         return member.guild_permissions.kick_members
+
+    async def cog_unload(self):
+        """
+        Cleanup tasks when the cog is unloaded.
+        """
+        self.check_unverified_users.cancel()
+        self.check_verified_users_activity.cancel()
 
 async def setup(bot: commands.Bot):
     cog = Verification(bot)

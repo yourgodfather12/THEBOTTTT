@@ -9,8 +9,11 @@ if not os.path.exists('logs'):
     os.makedirs('logs')
 
 # Set up logging
-logging.basicConfig(filename='logs/utility.log', level=logging.INFO,
-                    format='%(asctime)s:%(levelname)s:%(name)s: %(message)s')
+logging.basicConfig(
+    filename='logs/utility.log',
+    level=logging.INFO,
+    format='%(asctime)s:%(levelname)s:%(name)s: %(message)s'
+)
 logger = logging.getLogger(__name__)
 
 class UtilityCog(commands.Cog):
@@ -72,6 +75,15 @@ class UtilityCog(commands.Cog):
                 )
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 logger.info(f"All messages cleared in channel {interaction.channel.name}")
+            except discord.Forbidden:
+                logger.error(f"Bot does not have permission to clear messages in channel {interaction.channel.name}")
+                await interaction.response.send_message(
+                    embed=discord.Embed(
+                        description="Bot does not have permission to clear messages in this channel.",
+                        color=discord.Color.red()
+                    ),
+                    ephemeral=True
+                )
             except Exception as e:
                 logger.error(f"Error clearing chat: {e}", exc_info=True)
                 await interaction.response.send_message(
