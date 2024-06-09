@@ -40,6 +40,8 @@ class CallPosts(commands.Cog):
             logger.debug(f"Updated attachment count for member {member_id} in guild {guild_id}.")
         except Exception as e:
             logger.error(f"Error updating attachment count: {e}", exc_info=True)
+        finally:
+            await db_session.close()
 
     async def reset_message_counts(self, db_session: AsyncSession):
         try:
@@ -48,6 +50,8 @@ class CallPosts(commands.Cog):
             logger.info("Message counts reset successfully.")
         except Exception as e:
             logger.error(f"Error resetting message counts: {e}", exc_info=True)
+        finally:
+            await db_session.close()
 
     async def get_message_counts(self, db_session: AsyncSession, guild_id: int):
         try:
@@ -56,6 +60,8 @@ class CallPosts(commands.Cog):
         except Exception as e:
             logger.error(f"Error retrieving message counts: {e}", exc_info=True)
             return []
+        finally:
+            await db_session.close()
 
     @commands.Cog.listener()
     async def on_message(self, message):
