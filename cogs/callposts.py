@@ -1,14 +1,18 @@
 import logging
+import os
 from datetime import datetime, timedelta, time
+import asyncio
 
 import discord
 import pytz
 from discord import app_commands
 from discord.ext import commands, tasks
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.future import select
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 
-from db.database import AsyncSessionLocal, MessageCount
+from db.database import AsyncSessionLocal, MessageCount, Base
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -16,6 +20,23 @@ logger = logging.getLogger(__name__)
 
 # Set the timezone to Eastern Standard Time
 EST = pytz.timezone('US/Eastern')
+
+# Database setup
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db')
+engine = create_async_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
+
+async def init_db():
+    for _ in range(5):  # Try to initialize the database connection up to 5 times
+        try:
+            async with engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+            logger.info("Database initialized successfully.")
+            return
+        except (SQLAlchemyError, DBAPIError) as e:
+            logger.error(f"Error initializing database: {e}")
+            await asyncio.sleep(5)
+    logger.critical("Failed to initialize database after several attempts.")
 
 class CallPosts(commands.Cog):
     def __init__(self, bot):
@@ -161,4 +182,5 @@ class CallPosts(commands.Cog):
             await interaction.followup.send(f"An error occurred while kicking members: {e}", ephemeral=True)
 
 async def setup(bot: commands.Bot):
+    await init_db()  # Initialize the database
     await bot.add_cog(CallPosts(bot))

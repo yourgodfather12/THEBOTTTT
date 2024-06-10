@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from datetime import datetime, timedelta
 import os
@@ -11,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import pytz
 
-from db.database import UserCurrency, Transaction, County, RecentPurchase
+from db.database import UserCurrency, Transaction, County, RecentPurchase, Base
 
 # Load environment variables from .env file
 load_dotenv()
@@ -25,11 +26,20 @@ DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite+aiosqlite:///./kywins.db')
 engine = create_async_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
 
+async def init_db():
+    for _ in range(5):  # Try to initialize the database connection up to 5 times
+        try:
+            async with engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+            logger.info("Database initialized successfully.")
+            return
+        except Exception as e:
+            logger.error(f"Error initializing database: {e}")
+            await asyncio.sleep(5)
+    logger.critical("Failed to initialize database after several attempts.")
+
 # Timezone setup
 eastern = pytz.timezone('US/Eastern')
-
-def has_any_role(member: discord.Member, *role_names: str) -> bool:
-    return any(role.name in role_names for role in member.roles)
 
 class CurrencySystem(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -75,12 +85,20 @@ class CurrencySystem(commands.Cog):
             logger.error(f"Error fetching transaction history for user {user_id}: {e}")
             return []
 
-    async def send_embed_message(self, interaction: discord.Interaction, title: str, description: str) -> None:
-        embed = discord.Embed(title=title, description=description, color=discord.Color.blue())
+    async def send_embed_message(self, interaction: discord.Interaction, title: str, description: str, color=discord.Color.blue()) -> None:
+        embed = discord.Embed(title=title, description=description, color=color)
         try:
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except discord.errors.NotFound:
             logger.warning(f"Context not found when sending message: {title} - {description}")
+
+    async def check_balance_and_update(self, interaction: discord.Interaction, user_id: int, amount: int, description: str) -> bool:
+        balance = await self.get_balance(user_id)
+        if balance < amount:
+            await self.send_embed_message(interaction, "Error", "You do not have enough KyBucks.", discord.Color.red())
+            return False
+        await self.update_balance(user_id, -amount, description)
+        return True
 
     @app_commands.command(name="balance", description="Check your KyBucks balance")
     async def balance(self, interaction: discord.Interaction):
@@ -92,19 +110,19 @@ class CurrencySystem(commands.Cog):
     @app_commands.describe(user="The user to give KyBucks to", amount="The amount of KyBucks to give")
     async def give(self, interaction: discord.Interaction, user: discord.User, amount: int):
         if amount <= 0:
-            await self.send_embed_message(interaction, "Error", "The amount must be positive.")
+            await self.send_embed_message(interaction, "Error", "The amount must be positive.", discord.Color.red())
             return
 
         giver_id = interaction.user.id
         receiver_id = user.id
 
         if giver_id == receiver_id:
-            await self.send_embed_message(interaction, "Error", "You cannot give KyBucks to yourself.")
+            await self.send_embed_message(interaction, "Error", "You cannot give KyBucks to yourself.", discord.Color.red())
             return
 
         giver_balance = await self.get_balance(giver_id)
         if giver_balance < amount:
-            await self.send_embed_message(interaction, "Error", "You do not have enough KyBucks.")
+            await self.send_embed_message(interaction, "Error", "You do not have enough KyBucks.", discord.Color.red())
             return
 
         async with SessionLocal() as db:
@@ -115,7 +133,7 @@ class CurrencySystem(commands.Cog):
                 except Exception as e:
                     await db.rollback()
                     logger.error(f"Error giving KyBucks from {giver_id} to {receiver_id}: {e}")
-                    await self.send_embed_message(interaction, "Error", "An error occurred while processing the transaction.")
+                    await self.send_embed_message(interaction, "Error", "An error occurred while processing the transaction.", discord.Color.red())
                     return
 
         await self.send_embed_message(interaction, "Success", f"You have successfully given {amount} KyBucks to {user.display_name}.")
@@ -151,7 +169,7 @@ class CurrencySystem(commands.Cog):
                 await self.send_embed_message(interaction, "KyBucks Leaderboard", leaderboard_message)
         except Exception as e:
             logger.error(f"Error fetching leaderboard: {e}")
-            await self.send_embed_message(interaction, "Error", "An error occurred while retrieving the leaderboard.")
+            await self.send_embed_message(interaction, "Error", "An error occurred while retrieving the leaderboard.", discord.Color.red())
 
     @app_commands.command(name="daily", description="Claim your daily KyBucks reward")
     async def daily(self, interaction: discord.Interaction):
@@ -164,21 +182,21 @@ class CurrencySystem(commands.Cog):
                     time_left = (last_claim.timestamp + timedelta(days=1)) - datetime.utcnow()
                     hours, remainder = divmod(time_left.seconds, 3600)
                     minutes, _ = divmod(remainder, 60)
-                    await self.send_embed_message(interaction, "Daily Reward", f"You have already claimed your daily reward. Try again in {time_left.days}d {hours}h {minutes}m.")
+                    await self.send_embed_message(interaction, "Daily Reward", f"You have already claimed your daily reward. Try again in {time_left.days}d {hours}h {minutes}m.", discord.Color.red())
                     return
 
                 await self.update_balance(user_id, self.daily_reward_amount, 'Daily Reward')
                 await self.send_embed_message(interaction, "Daily Reward", f"You have claimed your daily reward of {self.daily_reward_amount} KyBucks!")
         except Exception as e:
             logger.error(f"Error claiming daily reward for user {user_id}: {e}")
-            await self.send_embed_message(interaction, "Error", "An error occurred while claiming your daily reward.")
+            await self.send_embed_message(interaction, "Error", "An error occurred while claiming your daily reward.", discord.Color.red())
 
     @app_commands.command(name="setdailyreward", description="Set the daily KyBucks reward amount (Admin only)")
     @app_commands.describe(amount="The amount of KyBucks for the daily reward")
     @app_commands.default_permissions(administrator=True)
     async def set_daily_reward(self, interaction: discord.Interaction, amount: int):
         if amount <= 0:
-            await self.send_embed_message(interaction, "Error", "The amount must be positive.")
+            await self.send_embed_message(interaction, "Error", "The amount must be positive.", discord.Color.red())
             return
 
         self.daily_reward_amount = amount
@@ -189,7 +207,7 @@ class CurrencySystem(commands.Cog):
     @app_commands.default_permissions(administrator=True)
     async def set_attachment_reward(self, interaction: discord.Interaction, amount: int):
         if amount <= 0:
-            await self.send_embed_message(interaction, "Error", "The amount must be positive.")
+            await self.send_embed_message(interaction, "Error", "The amount must be positive.", discord.Color.red())
             return
 
         self.kybucks_per_attachment = amount
@@ -200,7 +218,7 @@ class CurrencySystem(commands.Cog):
     @app_commands.default_permissions(administrator=True)
     async def admin_add(self, interaction: discord.Interaction, user: discord.User, amount: int):
         if amount <= 0:
-            await self.send_embed_message(interaction, "Error", "The amount must be positive.")
+            await self.send_embed_message(interaction, "Error", "The amount must be positive.", discord.Color.red())
             return
 
         await self.update_balance(user.id, amount, f"Admin added {amount} KyBucks")
@@ -211,12 +229,12 @@ class CurrencySystem(commands.Cog):
     @app_commands.default_permissions(administrator=True)
     async def admin_remove(self, interaction: discord.Interaction, user: discord.User, amount: int):
         if amount <= 0:
-            await self.send_embed_message(interaction, "Error", "The amount must be positive.")
+            await self.send_embed_message(interaction, "Error", "The amount must be positive.", discord.Color.red())
             return
 
         balance = await self.get_balance(user.id)
         if balance < amount:
-            await self.send_embed_message(interaction, "Error", f"{user.display_name} does not have enough KyBucks.")
+            await self.send_embed_message(interaction, "Error", f"{user.display_name} does not have enough KyBucks.", discord.Color.red())
             return
 
         await self.update_balance(user.id, -amount, f"Admin removed {amount} KyBucks")
@@ -259,7 +277,7 @@ class CurrencySystem(commands.Cog):
                 if balance < item.folder_count:
                     return False, "Insufficient KyBucks."
                 async with session.begin():
-                    await self.update_balance(user_id, username, -item.folder_count)
+                    await self.update_balance(user_id, -item.folder_count, f"Purchased {item_name}")
                     new_purchase = RecentPurchase(user_id=user_id, username=username, county_name=item_name, price=item.folder_count)
                     session.add(new_purchase)
                     await session.commit()
@@ -273,7 +291,7 @@ class CurrencySystem(commands.Cog):
     async def add_item(self, interaction: discord.Interaction, item_name: str, item_cost: int, folder_path: str, item_description: str = "", item_image_url: str = ""):
         """Adds a new item to the store."""
         if item_cost <= 0:
-            await interaction.response.send_message("Item cost must be greater than zero.", ephemeral=True)
+            await self.send_embed_message(interaction, "Error", "Item cost must be greater than zero.", discord.Color.red())
             return
         success, message = await self.add_new_item(item_name, item_cost, folder_path, item_description, item_image_url)
         await interaction.response.send_message(message, ephemeral=True)
@@ -292,7 +310,7 @@ class CurrencySystem(commands.Cog):
                 result = await session.execute(select(County))
                 items = result.scalars().all()
                 if not items:
-                    await interaction.response.send_message('No items are available in the store.', ephemeral=True)
+                    await self.send_embed_message(interaction, "Store Items", 'No items are available in the store.', discord.Color.red())
                     return
                 embed = discord.Embed(title="Store Items", description="Here are the items available for purchase:")
                 for item in items:
@@ -302,8 +320,9 @@ class CurrencySystem(commands.Cog):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             logger.error(f"Error listing items: {e}")
-            await interaction.response.send_message("An error occurred while listing items. Please try again later.", ephemeral=True)
+            await self.send_embed_message(interaction, "Error", "An error occurred while listing items. Please try again later.", discord.Color.red())
 
 async def setup(bot: commands.Bot):
+    await init_db()  # Initialize the database
     cog = CurrencySystem(bot)
     await bot.add_cog(cog)

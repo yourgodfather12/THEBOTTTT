@@ -23,7 +23,6 @@ logger = logging.getLogger(__name__)
 class UploadCog(commands.Cog):
     def __init__(self, bot: commands.Bot, folder_path: str):
         self.bot = bot
-        self.tree = bot.tree
         self.folder_path = folder_path
         self.uploaded_files: Set[str] = set()
         self.resume_state_file = "logs/upload_resume_state.json"

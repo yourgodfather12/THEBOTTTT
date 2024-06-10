@@ -104,5 +104,9 @@ class ServerRulesCog(commands.Cog):
             await interaction.response.send_message("An error occurred while displaying the rules. Please try again later.", ephemeral=True)
 
 async def setup(bot: commands.Bot):
+    """
+    Set up the ServerRulesCog and add it to the bot.
+    """
     cog = ServerRulesCog(bot)
     await bot.add_cog(cog)
+

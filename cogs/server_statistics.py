@@ -67,5 +67,4 @@ class ServerStatisticsCog(commands.Cog):
                 "An error occurred while displaying the statistics. Please try again later.", ephemeral=True)
 
 async def setup(bot: commands.Bot):
-    cog = ServerStatisticsCog(bot)
-    await bot.add_cog(cog)
+    await bot.add_cog(ServerStatisticsCog(bot))

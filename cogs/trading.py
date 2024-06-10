@@ -2,21 +2,35 @@ import asyncio
 import hashlib
 import io
 import os
-from typing import Optional, Dict, List
+from typing import Optional, Dict, Union
 
 import discord
 import moviepy.editor as mp  # Library for handling video files
+import logging
+import logging.handlers
+
 from discord.ext import commands
 from discord import app_commands
 from discord.ui import View, Button, Select, Modal, TextInput
-import logging
-import logging.handlers
+from db.database import Trade, Member, Attachment, init_db, AsyncSessionLocal
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Constants for attachment validation
 VALID_ATTACHMENT_TYPES = ['image/jpeg', 'image/png', 'video/mp4', 'video/quicktime']
 MAX_ATTACHMENT_SIZE = 8 * 1024 * 1024  # 8 MB
 TRADE_TIMEOUT = 300  # 5 minutes
 LOG_FILE_SIZE_LIMIT = 10 * 1024 * 1024  # 10 MB for log rotation
+
+# Initialize the logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.handlers.RotatingFileHandler('logs/trading.log', maxBytes=LOG_FILE_SIZE_LIMIT, backupCount=5)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 class TradeModal(Modal):
     def __init__(self, user: discord.User, view: View):
@@ -107,17 +121,6 @@ class TradingCog(commands.Cog):
         self.log_dir = os.path.join(os.path.dirname(__file__), "../logs")
         self.trades_dir = os.path.join(self.log_dir, "trades")
         os.makedirs(self.trades_dir, exist_ok=True)
-        self.log_file = os.path.join(self.log_dir, "trading.log")
-        self.setup_logging()
-
-    def setup_logging(self):
-        """Setup logging with log rotation."""
-        handler = logging.handlers.RotatingFileHandler(self.log_file, maxBytes=LOG_FILE_SIZE_LIMIT, backupCount=5)
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        logger = logging.getLogger(__name__)
-        logger.setLevel(logging.INFO)
-        logger.addHandler(handler)
 
     @app_commands.command(name="trade", description="Initiate a trade")
     @app_commands.default_permissions(manage_messages=True)
@@ -279,9 +282,13 @@ class TradingCog(commands.Cog):
             return True
         except discord.Forbidden:
             await self.log_trade(user, f"Failed to send DM: {content}")
-            print(f"Failed to send DM to {user.name}")
+            logger.warning(f"Failed to send DM to {user.name}")
             return False
 
+    async def cog_unload(self):
+        await self.session.close()
+
 async def setup(bot: commands.Bot):
+    await init_db()  # Initialize the database asynchronously
     cog = TradingCog(bot)
     await bot.add_cog(cog)

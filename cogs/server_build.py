@@ -224,9 +224,11 @@ class ServerBuilder(commands.Cog):
                 ephemeral=True
             )
 
-    def cog_unload(self):
-        asyncio.create_task(self.session.close())
+    async def cog_unload(self):
+        """Close the aiohttp session when the cog is unloaded."""
+        await self.session.close()
 
 async def setup(bot: commands.Bot) -> None:
+    """Setup function to add the cog to the bot."""
     cog = ServerBuilder(bot)
     await bot.add_cog(cog)

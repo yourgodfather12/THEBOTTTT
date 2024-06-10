@@ -56,14 +56,16 @@ class AttachmentCog(commands.Cog):
         """Sanitize the filename to remove invalid characters."""
         return re.sub(r'[^\w\-_. ]', '', filename)
 
-    async def download_attachment(self, session: aiohttp.ClientSession, attachment: discord.Attachment, file_path: str, pbar: Optional[tqdm] = None) -> None:
+    async def download_attachment(self, session: aiohttp.ClientSession, attachment: discord.Attachment, file_path: str,
+                                  pbar: Optional[tqdm] = None) -> None:
         """Download the attachment and save it to the specified file path."""
         async with self.semaphore:
             try:
                 async with session.get(attachment.url, timeout=aiohttp.ClientTimeout(total=DOWNLOAD_TIMEOUT)) as resp:
                     if resp.status == 200:
+                        file_content = await resp.read()
                         async with aiofiles.open(file_path, 'wb') as f:
-                            await f.write(await resp.read())
+                            await f.write(file_content)
                         logger.info(f"Attachment saved: {file_path}")
                     else:
                         logger.error(f"Failed to download attachment: {attachment.url} with status {resp.status}")
@@ -84,19 +86,15 @@ class AttachmentCog(commands.Cog):
                 session.add_all(attachments)
             await session.commit()
             logger.info(f"{len(attachments)} attachments metadata saved to database")
-        except IntegrityError as e:
+        except (IntegrityError, SQLAlchemyError) as e:
             logger.error(f"Error saving attachments to database: {e}")
-            await session.rollback()
-        except SQLAlchemyError as e:
-            logger.error(f"Database error: {e}")
             await session.rollback()
 
     async def ensure_directories(self, guild_name: str, channel_name: str, post_dir_name: str) -> str:
         """Ensure the necessary directories exist and return the post directory path."""
-        guild_dir = os.path.join(DATA_DIR, guild_name)
-        channel_dir = os.path.join(guild_dir, channel_name)
-        post_dir = os.path.join(channel_dir, post_dir_name)
+        post_dir = os.path.join(DATA_DIR, guild_name, channel_name, post_dir_name)
         os.makedirs(post_dir, exist_ok=True)
+        logger.info(f"Directories ensured: {post_dir}")
         return post_dir
 
     async def save_attachments_from_message(self, message: discord.Message, pbar: Optional[tqdm] = None) -> None:
@@ -121,7 +119,9 @@ class AttachmentCog(commands.Cog):
                     file_name_without_extension, extension = os.path.splitext(safe_filename)
                     file_path = os.path.join(post_dir, f"{file_name_without_extension}_{index}{extension}")
 
+                    logger.info(f"Processing attachment: {attachment.url}")
                     if not await self.async_file_exists(file_path):
+                        logger.info(f"Downloading attachment: {file_path}")
                         tasks.append(self.download_attachment(session, attachment, file_path, pbar))
                         attachments.append(Attachment(
                             username=username,
@@ -153,7 +153,7 @@ class AttachmentCog(commands.Cog):
     async def on_ready(self) -> None:
         """Listener to start background tasks after the bot is ready."""
         await self.bot.wait_until_ready()
-        self.bot.loop.create_task(self.fetch_past_attachments())
+        await self.fetch_past_attachments()
 
     @app_commands.command(name="save_all", description="Save all attachments from the entire server")
     @app_commands.default_permissions(administrator=True)
@@ -187,23 +187,23 @@ class AttachmentCog(commands.Cog):
 
     async def process_existing_files(self, directory: str) -> None:
         """Process existing files in the data directory and save their metadata to the database."""
-        for root, _, files in os.walk(directory):
-            for filename in files:
-                if filename.endswith(tuple(SUPPORTED_EXTENSIONS)):
-                    file_path = os.path.join(root, filename)
-                    parts = file_path.split(os.sep)
-                    if len(parts) >= 4:
-                        guild_name = parts[-4]
-                        channel_name = parts[-3]
-                        post_dir_name = parts[-2]
-                        async with SessionLocal() as session:
+        async with SessionLocal() as session:
+            for root, _, files in os.walk(directory):
+                for filename in files:
+                    if filename.endswith(tuple(SUPPORTED_EXTENSIONS)):
+                        file_path = os.path.join(root, filename)
+                        parts = file_path.split(os.sep)
+                        if len(parts) >= 4:
+                            guild_name = parts[-4]
+                            channel_name = parts[-3]
+                            post_dir_name = parts[-2]
                             await self.save_to_database(session, [Attachment(
                                 username=guild_name,
                                 channel_name=channel_name,
                                 post_dir_name=post_dir_name,
                                 filename=filename,
                                 file_path=file_path,
-                                timestamp=datetime.utcnow()
+                                timestamp=datetime.now(datetime.UTC),
                             )])
 
     @app_commands.command(name="fetch", description="Retroactively add attachments in the server to the database")
@@ -214,7 +214,8 @@ class AttachmentCog(commands.Cog):
         try:
             await self.fetch_past_attachments_from_guild(interaction.guild)
             await self.process_existing_files(DATA_DIR)
-            await interaction.followup.send("All attachments have been retroactively added to the database.", ephemeral=True)
+            await interaction.followup.send("All attachments have been retroactively added to the database.",
+                                            ephemeral=True)
         except Exception as e:
             logger.error(f"Error in fetch command: {e}")
             await interaction.followup.send("An error occurred while fetching attachments.", ephemeral=True)
