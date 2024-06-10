@@ -8,7 +8,7 @@ from discord.ext import commands, tasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from db.database import AsyncSessionLocal, MessageCount, Attachment
+from db.database import AsyncSessionLocal, MessageCount
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -27,41 +27,38 @@ class CallPosts(commands.Cog):
     def cog_unload(self):
         self.track_messages.cancel()
 
-    async def update_attachment_count(self, db_session: AsyncSession, guild_id: int, member_id: int, attachment_count: int):
-        try:
-            result = await db_session.execute(select(MessageCount).filter_by(guild_id=guild_id, member_id=member_id))
-            message_count = result.scalars().first()
-            if message_count:
-                message_count.count += attachment_count
-            else:
-                message_count = MessageCount(guild_id=guild_id, member_id=member_id, count=attachment_count)
-                db_session.add(message_count)
-            await db_session.commit()
-            logger.debug(f"Updated attachment count for member {member_id} in guild {guild_id}.")
-        except Exception as e:
-            logger.error(f"Error updating attachment count: {e}", exc_info=True)
-        finally:
-            await db_session.close()
+    async def update_attachment_count(self, guild_id: int, member_id: int, attachment_count: int):
+        async with AsyncSessionLocal() as db_session:
+            try:
+                result = await db_session.execute(select(MessageCount).filter_by(guild_id=guild_id, member_id=member_id))
+                message_count = result.scalars().first()
+                if message_count:
+                    message_count.count += attachment_count
+                else:
+                    message_count = MessageCount(guild_id=guild_id, member_id=member_id, count=attachment_count)
+                    db_session.add(message_count)
+                await db_session.commit()
+                logger.debug(f"Updated attachment count for member {member_id} in guild {guild_id}.")
+            except Exception as e:
+                logger.error(f"Error updating attachment count: {e}", exc_info=True)
 
-    async def reset_message_counts(self, db_session: AsyncSession):
-        try:
-            await db_session.execute(MessageCount.__table__.delete())
-            await db_session.commit()
-            logger.info("Message counts reset successfully.")
-        except Exception as e:
-            logger.error(f"Error resetting message counts: {e}", exc_info=True)
-        finally:
-            await db_session.close()
+    async def reset_message_counts(self):
+        async with AsyncSessionLocal() as db_session:
+            try:
+                await db_session.execute(MessageCount.__table__.delete())
+                await db_session.commit()
+                logger.info("Message counts reset successfully.")
+            except Exception as e:
+                logger.error(f"Error resetting message counts: {e}", exc_info=True)
 
-    async def get_message_counts(self, db_session: AsyncSession, guild_id: int):
-        try:
-            result = await db_session.execute(select(MessageCount).filter_by(guild_id=guild_id))
-            return result.scalars().all()
-        except Exception as e:
-            logger.error(f"Error retrieving message counts: {e}", exc_info=True)
-            return []
-        finally:
-            await db_session.close()
+    async def get_message_counts(self, guild_id: int):
+        async with AsyncSessionLocal() as db_session:
+            try:
+                result = await db_session.execute(select(MessageCount).filter_by(guild_id=guild_id))
+                return result.scalars().all()
+            except Exception as e:
+                logger.error(f"Error retrieving message counts: {e}", exc_info=True)
+                return []
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -73,29 +70,29 @@ class CallPosts(commands.Cog):
             guild_id = message.guild.id
             member_id = message.author.id
 
-            async with AsyncSessionLocal() as db_session:
-                await self.update_attachment_count(db_session, guild_id, member_id, attachment_count)
+            logger.info(f"Updating attachment count for member {member_id} in guild {guild_id} with {attachment_count} attachments.")
+            await self.update_attachment_count(guild_id, member_id, attachment_count)
 
     @tasks.loop(hours=24)
     async def track_messages(self):
         now = datetime.now(pytz.UTC).astimezone(EST)
         kick_datetime = datetime.combine(now.date(), self.kick_time).replace(tzinfo=EST)
         if now.weekday() == self.kick_day and now >= kick_datetime:
-            async with AsyncSessionLocal() as db_session:
-                await self.reset_message_counts(db_session)
+            logger.info("Resetting message counts.")
+            await self.reset_message_counts()
 
     @track_messages.before_loop
     async def before_track_messages(self):
         await self.bot.wait_until_ready()
 
-    async def kick_low_activity_members(self, db_session: AsyncSession, guild: discord.Guild):
+    async def kick_low_activity_members(self, guild: discord.Guild):
         member_role = discord.utils.get(guild.roles, name="Member")
         if not member_role:
             logger.warning(f"Role 'Member' not found in guild {guild.name}.")
             return
 
         kicked_members = []
-        message_counts = await self.get_message_counts(db_session, guild.id)
+        message_counts = await self.get_message_counts(guild.id)
         for message_count in message_counts:
             if message_count.count < 5:
                 member = guild.get_member(message_count.member_id)
@@ -105,6 +102,8 @@ class CallPosts(commands.Cog):
                         kicked_members.append(member.display_name)
                     except discord.Forbidden:
                         logger.warning(f"Bot doesn't have permission to kick {member.display_name} in guild {guild.name}. Skipping...")
+                    except Exception as e:
+                        logger.error(f"Error kicking member {member.display_name}: {e}", exc_info=True)
 
         if kicked_members:
             kicked_list = "\n".join(kicked_members)
@@ -115,8 +114,7 @@ class CallPosts(commands.Cog):
     async def callposts(self, interaction: discord.Interaction):
         await interaction.response.send_message("Processing attachment counts. This may take a moment...", ephemeral=True)
         try:
-            async with AsyncSessionLocal() as db_session:
-                message_counts = await self.get_message_counts(db_session, interaction.guild.id)
+            message_counts = await self.get_message_counts(interaction.guild.id)
             if not message_counts:
                 await interaction.followup.send("No members found with the 'Member' role.", ephemeral=True)
                 return
@@ -156,8 +154,7 @@ class CallPosts(commands.Cog):
     async def kicklowposts(self, interaction: discord.Interaction):
         await interaction.response.send_message("Starting kicking process. This may take a moment...", ephemeral=True)
         try:
-            async with AsyncSessionLocal() as db_session:
-                await self.kick_low_activity_members(db_session, interaction.guild)
+            await self.kick_low_activity_members(interaction.guild)
             await interaction.followup.send("Kicking process completed.", ephemeral=True)
         except Exception as e:
             logger.error(f"Error in kicklowposts: {e}", exc_info=True)

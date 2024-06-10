@@ -1,22 +1,10 @@
-import asyncio
-import logging
-import os
-from typing import Optional
-
 import discord
-from discord import app_commands
 from discord.ext import commands
+from discord import app_commands
+import logging
 
-# Ensure the logs directory exists
-if not os.path.exists('logs'):
-    os.makedirs('logs')
+from db.database import handle_database_operations  # Ensure this import is correct
 
-# Set up logging
-logging.basicConfig(
-    filename='logs/admin.log',
-    level=logging.INFO,
-    format='%(asctime)s:%(levelname)s:%(name)s: %(message)s'
-)
 logger = logging.getLogger(__name__)
 
 class AdminCog(commands.Cog):
@@ -258,6 +246,16 @@ class AdminCog(commands.Cog):
                 ephemeral=True
             )
             logger.error(f"Failed to send announcement to {channel.name} by {interaction.user.name} in {interaction.guild.name}: {e}")
+
+    @app_commands.command(name="populate_db", description="Retroactively populate all database tables.")
+    async def populate_db(self, interaction: discord.Interaction):
+        await interaction.response.send_message("Starting database population. This may take a while...", ephemeral=True)
+        try:
+            await handle_database_operations(self.bot)
+            await interaction.followup.send("Database population completed successfully.", ephemeral=True)
+        except Exception as e:
+            logging.error(f"Error during database population: {e}")
+            await interaction.followup.send(f"An error occurred: {e}", ephemeral=True)
 
     @app_commands.command(name="change_server_name", description="Changes the server's name.")
     @app_commands.describe(name="The new name for the server")

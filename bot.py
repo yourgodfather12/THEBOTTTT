@@ -45,7 +45,7 @@ async def on_ready():
         logger.info(f'Logged in as {bot.user}')
         try:
             guild = discord.Object(id=int(GUILD_ID))  # Ensure you use the correct guild ID
-            await bot.tree.sync()  # Synchronize slash commands with the specific guild
+            await bot.tree.sync(guild=guild)  # Synchronize slash commands with the specific guild
             logger.info(f'Slash commands synced with guild: {GUILD_ID}')
         except discord.Forbidden:
             logger.error(f"Error: Missing access to guild {GUILD_ID}")
